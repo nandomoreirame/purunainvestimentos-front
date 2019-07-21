@@ -4,8 +4,18 @@
       <b-col col md="4" offset-md="1">
         <h3>Acesse os sites</h3>
         <ul>
-          <li><a href="http://cvm.gov.br" target="_blank">cvm.gov.br</a></li>
-          <li><a href="http://comoinvestir.anbima.com.br" target="_blank">comoinvestir.anbima.com.br</a></li>
+          <li>
+            <a href="http://cvm.gov.br" target="_blank">
+              <p-icon-external-link />
+              <span>cvm.gov.br</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://comoinvestir.anbima.com.br" target="_blank">
+              <p-icon-external-link />
+              <span>comoinvestir.anbima.com.br</span>
+            </a>
+          </li>
         </ul>
 
         <h3>Siga-nos</h3>
@@ -31,15 +41,12 @@
 </template>
 
 <script>
-import PSection from '~/components/Section.vue'
-import PIconInstagram from '~/components/svg/Instagram.vue'
-import PIconLinkedin from '~/components/svg/Linkedin.vue'
-
 export default {
   components: {
-    PSection,
-    PIconInstagram,
-    PIconLinkedin
+    PSection: () => import('~/components/Section.vue'),
+    PIconExternalLink: () => import('~/components/svg/ExternalLink.vue'),
+    PIconInstagram: () => import('~/components/svg/Instagram.vue'),
+    PIconLinkedin: () => import('~/components/svg/Linkedin.vue')
   }
 }
 </script>

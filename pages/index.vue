@@ -24,11 +24,7 @@
     <p-section class="section-2">
       <b-row>
         <b-col col md="3" offset-md="1">
-          <div class="arrows">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <p-svg-bars />
         </b-col>
         <b-col col md="8">
           <h2>Desintermediação financeira e investimentos arrojados através de FIDC.</h2>
@@ -75,7 +71,52 @@
       </b-row>
       <b-row>
         <b-col col md="10" offset-md="1">
-          <b-button variant="dark">Cases de empresas</b-button>
+          <b-button variant="dark">
+            <span>Cases de empresas</span>
+            <svg width="8" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <path d="M168.067 20.386l-4.773 5.1a.994.994 0 0 0 0 1.359.872.872 0 0 0 1.271 0l3.502-3.733 3.502 3.733a.872.872 0 0 0 1.272 0 .994.994 0 0 0 0-1.358l-4.774-5.101z" />
+              </defs>
+              <use fill="#fff" transform="rotate(90 95.067 -67.045)" xlink:href="#a" fill-rule="evenodd" />
+            </svg>
+          </b-button>
+        </b-col>
+      </b-row>
+    </p-section>
+
+    <p-section class="section-5">
+      <b-row>
+        <b-col col md="3">
+          <h2>Os FIDCs são fundos de investimentos que impulsionam o crescimento do país e atuam nos mais variados segmentos da econômia.</h2>
+        </b-col>
+        <b-col col md="3">
+          <h3>Classificações de FIDC</h3>
+          <ul>
+            <li>Fomento Mercantil Agro, Indústria e Comércio</li>
+            <li>Infraestrutura</li>
+            <li>Recebíveis Comerciais</li>
+            <li>Crédito Corporativo</li>
+            <li>Agronegócio</li>
+            <li>Multicarteira Agro, Indústria e Comércio</li>
+          </ul>
+        </b-col>
+        <b-col col md="3">
+          <h3>Classificações de FIDC</h3>
+          <ul>
+            <li>Crédito Imobiliário</li>
+            <li>Crédito Consignado</li>
+            <li>Crédito Pessoal</li>
+            <li>Financiamento de Veículos</li>
+            <li>Multicarteira Financeiro</li>
+          </ul>
+        </b-col>
+        <b-col col md="3">
+          <h3>Classificações de FIDC</h3>
+          <ul>
+            <li>Recuperação (Non Performing Loans)</li>
+            <li>Poder Público</li>
+            <li>Multicarteira (outros)</li>
+          </ul>
         </b-col>
       </b-row>
     </p-section>
@@ -83,14 +124,12 @@
 </template>
 
 <script>
-import PHero from '~/components/Hero.vue'
-import PSection from '~/components/Section.vue'
-
 export default {
   layout: 'home',
   components: {
-    PHero,
-    PSection
+    PHero: () => import('~/components/Hero.vue'),
+    PSection: () => import('~/components/Section.vue'),
+    PSvgBars: () => import('~/components/svg/Bars.vue')
   }
 }
 </script>
@@ -103,6 +142,11 @@ export default {
       line-height: 1.17;
       letter-spacing: -2px;
       margin-bottom: 60px;
+    }
+
+    .bars {
+      position: relative;
+      top: 100px;
     }
   }
 
@@ -127,6 +171,55 @@ export default {
       font-size: 60px;
       line-height: 1.17;
       margin-bottom: 60px;
+    }
+
+    .btn {
+      min-width: 210px;
+    }
+  }
+
+  &.section-5 {
+    h2 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: -0.8px;
+      color: #000;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.78;
+      color: #000;
+      text-transform: initial;
+      letter-spacing: initial;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: 16px;
+        line-height: 2;
+        color: #4a4a4a;
+        position: relative;
+        padding-left: 15px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 14px;
+          left: 0;
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          background-color: #007aff;
+          margin-right: 5px;
+        }
+      }
     }
   }
 }

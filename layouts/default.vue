@@ -10,15 +10,11 @@
 </template>
 
 <script>
-import PHeader from '~/components/Header.vue'
-import PBoxInfo from '~/components/BoxInfo.vue'
-import PFooter from '~/components/Footer.vue'
-
 export default {
   components: {
-    PHeader,
-    PBoxInfo,
-    PFooter
+    PHeader: () => import('~/components/Header.vue'),
+    PBoxInfo: () => import('~/components/BoxInfo.vue'),
+    PFooter: () => import('~/components/Footer.vue')
   }
 }
 </script>

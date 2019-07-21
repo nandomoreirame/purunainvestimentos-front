@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import PPageHeader from '~/components/PageHeader.vue'
-
 export default {
   components: {
-    PPageHeader
+    PPageHeader: () => import('~/components/PageHeader.vue')
   }
 }
 </script>

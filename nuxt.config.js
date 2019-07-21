@@ -14,7 +14,17 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,600,600i,800,800i&display=swap' },
+    ],
+    script: [
+      // { src: '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js' },
+      // { src: '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js' },
+      // { src: '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js' },
+      // { src: '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/ScrollToPlugin.min.js' },
+      // { src: '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js' }
+    ]
   },
 
   /*
@@ -33,7 +43,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '~/plugins/webfont.js', ssr: false }
+    // { src: '~/plugins/webfont.js', ssr: false },
+    { src: '~/plugins/animations.js', ssr: false },
   ],
 
   /*

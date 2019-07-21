@@ -24,13 +24,10 @@
 </template>
 
 <script>
-import PLogoDark from '~/components/svg/LogoDark.vue'
-import PLogoLight from '~/components/svg/LogoLight.vue'
-
 export default {
   components: {
-    PLogoDark,
-    PLogoLight
+    PLogoDark: () => import('~/components/svg/LogoDark.vue'),
+    PLogoLight: () => import('~/components/svg/LogoLight.vue')
   },
   props: {
     white: {
