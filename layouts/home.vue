@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-header />
+    <p-header white />
     <main id="main-page">
       <nuxt />
       <p-box-info />

@@ -20,7 +20,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#007aff' },
 
   /*
    ** Global CSS
@@ -32,7 +32,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/webfont.js', ssr: false }
+  ],
 
   /*
    ** Nuxt.js modules
@@ -54,6 +56,10 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  router: {
+    linkActiveClass: 'active'
   },
 
   /*
