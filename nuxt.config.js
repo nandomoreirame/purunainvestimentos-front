@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import pkg from './package'
 
 export default {
@@ -25,7 +26,7 @@ export default {
    ** Global CSS
    */
   css: [
-    '@/assets/sass/style.sass'
+    '@/assets/sass/style.scss'
   ],
 
   /*
@@ -39,8 +40,15 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'bootstrap-vue/nuxt'
   ],
+
+  bootstrapVue: {
+    bootstrapCSS: false, // Or `css: false`
+    bootstrapVueCSS: false // Or `bvCSS: false`
+  },
+
   /*
    ** Axios module configuration
    */

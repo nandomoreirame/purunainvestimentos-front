@@ -9,15 +9,11 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-    'plugin:nuxt/recommended',
-    'plugin:prettier/recommended',
-    'prettier',
-    'prettier/vue'
-  ],
-  plugins: [
-    'prettier'
+    'plugin:nuxt/recommended'
   ],
   // add your custom rules here
   rules: {
+    'vue/html-self-closing': 'off',
+    'vue/singleline-html-element-content-newline': 'off'
   }
 }
