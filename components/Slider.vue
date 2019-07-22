@@ -1,7 +1,7 @@
 <template>
   <section class="slider">
     <div class="slider-items">
-      <div v-for="(item, k) in items" :key="k" class="slider-item" :style="{ backgroundImage: `url(${item.image})` }">
+      <div v-for="(item, k) in items" :key="k" class="slider-item lazyload" :data-bg="`${require(`@/assets/images/${item.image}`)}`">
         <b-container class="slider-inner">
           <small class="slider-count" v-text="`0${(k + 1)}/0${items.length}`" />
           <h2 v-text="item.text" />
@@ -33,15 +33,15 @@ export default {
         return [
           {
             text: 'Somos uma gestora de fundos especializada em Investimentos Alternativos.',
-            image: require('@/assets/images/iStock-953577456.jpg')
+            image: 'iStock-953577456.jpg'
           },
           {
             text: 'Encontramos e viabilizamos as melhores formas de investimentos.',
-            image: require('@/assets/images/iStock-682839254.jpg')
+            image: 'iStock-682839254.jpg'
           },
           {
             text: 'Acreditamos que os investimentos no setor produtivo são feitos em cima de parcerias de longo prazo.',
-            image: require('@/assets/images/iStock-1040302812.jpg')
+            image: 'iStock-1040302812.jpg'
           }
         ]
       }

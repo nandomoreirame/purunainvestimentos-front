@@ -20,7 +20,7 @@
           <span>Selecionar</span>
         </b-col>
         <b-col col md="6" offset-md="1" class="column-image right full-right">
-          <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-508221156.jpg')})` }" />
+          <span :data-bg="`${require('@/assets/images/iStock-508221156.jpg')}`" class="lazyload" />
           <div class="black-block">
             <b-row>
               <b-col col md="4">

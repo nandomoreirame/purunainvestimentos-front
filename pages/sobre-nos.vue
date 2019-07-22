@@ -34,7 +34,7 @@
     <p-section class="section-2">
       <b-row>
         <b-col col md="7" class="column-image left">
-          <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-931230100.jpg')})` }" />
+          <span :data-bg="`${require('@/assets/images/iStock-931230100.jpg')}`" class="lazyload" />
         </b-col>
         <b-col col md="4">
           <h2>Valores da Organização</h2>

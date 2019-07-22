@@ -74,6 +74,7 @@ export default {
       margin-left: 25px;
       position: relative;
       overflow: hidden;
+      transition: opacity .3s ease-in-out, color .3s ease-in-out;
 
       &:not(:last-child) {
         margin-right: 20px;
@@ -90,7 +91,7 @@ export default {
         top: 0;
         width: 100%;
         height: 3px;
-        background: #007aff;
+        background-color: transparent;
         transition: opacity .3s ease-in-out, transform .3s ease-in-out;
         left: 0;
         transform: translate3d(0, 100%, 0);
@@ -104,6 +105,22 @@ export default {
         &::before {
           opacity: 1;
           transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &.active.nuxt-link-exact-active {
+        pointer-events: none;
+
+        &::before {
+          background-color: #007aff;
+        }
+      }
+
+      &:not(.nuxt-link-exact-active):hover {
+        opacity: 0.6;
+
+        &::before {
+          background-color: #9b9b9b;
         }
       }
     }

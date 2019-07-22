@@ -46,6 +46,7 @@ export default {
     // { src: '~/plugins/webfont.js', ssr: false },
     // { src: '~/plugins/animations.js', ssr: false },
     // { src: '~/plugins/slider.js', ssr: false },
+    { src: '~/plugins/lazysizes.js', ssr: false }
   ],
 
   /*
@@ -81,15 +82,20 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
+    extend(config, { isDev, isClient, loaders: { vue } }) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }
     }
   }

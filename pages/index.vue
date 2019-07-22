@@ -45,7 +45,7 @@
           </div>
         </b-col>
         <b-col col md="6" offset-md="1" class="column-image right full-right">
-          <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-922512798.jpg')})` }" />
+          <span :data-bg="`${require('@/assets/images/iStock-922512798.jpg')}`" class="lazyload" />
         </b-col>
       </b-row>
     </p-section>
@@ -79,7 +79,7 @@
           <p>A PURUNÃ Investimentos tem como premissas básicas de sua cultura de trabalho a priorização da gestão de riscos e o seu aperfeiçoamento constante. Para que assim, a gestora tenha anulado ou minimizado todos os riscos envolvidos nas operações e os investidores estejam confortáveis em explorar as oportunidades de investimentos.</p>
         </b-col>
         <b-col col md="4" class="column-image right">
-          <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-921987904.jpg')})` }" />
+          <span :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`" class="lazyload" />
         </b-col>
       </b-row>
     </p-section>
