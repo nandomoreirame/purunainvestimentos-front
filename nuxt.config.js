@@ -44,7 +44,8 @@ export default {
    */
   plugins: [
     // { src: '~/plugins/webfont.js', ssr: false },
-    { src: '~/plugins/animations.js', ssr: false },
+    // { src: '~/plugins/animations.js', ssr: false },
+    // { src: '~/plugins/slider.js', ssr: false },
   ],
 
   /*

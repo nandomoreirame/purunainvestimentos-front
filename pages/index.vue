@@ -1,6 +1,35 @@
 <template>
   <div class="home">
-    <p-hero />
+    <p-slider />
+    <!--
+    <p-hero>
+      <p-svg-bars
+        :items="[
+          {
+            top: '70px',
+            left: '585px',
+            width: '320px',
+            height: '15px',
+            borderRadius: '10px'
+          },
+          {
+            top: '110px',
+            left: '320px',
+            width: '500px',
+            height: '25px',
+            borderRadius: '20px'
+          },
+          {
+            top: '-120px',
+            left: '260px',
+            width: '500px',
+            height: '50px',
+            borderRadius: '30px'
+          }
+        ]"
+      />
+    </p-hero>
+    -->
 
     <p-section class="section-1">
       <b-row>
@@ -15,7 +44,7 @@
             <p>Temos como proposta de negócio ser um elo entre empresas que necessitam de crédito e investidores que buscam oportunidades de investimentos por meio da Securitização de Ativos.</p>
           </div>
         </b-col>
-        <b-col col md="6" offset-md="1" class="column-image full-right">
+        <b-col col md="6" offset-md="1" class="column-image right full-right">
           <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-922512798.jpg')})` }" />
         </b-col>
       </b-row>
@@ -49,7 +78,7 @@
           <h2>Experiência, competência e resultados que fazem a diferença em longo prazo.</h2>
           <p>A PURUNÃ Investimentos tem como premissas básicas de sua cultura de trabalho a priorização da gestão de riscos e o seu aperfeiçoamento constante. Para que assim, a gestora tenha anulado ou minimizado todos os riscos envolvidos nas operações e os investidores estejam confortáveis em explorar as oportunidades de investimentos.</p>
         </b-col>
-        <b-col col md="4" class="column-image">
+        <b-col col md="4" class="column-image right">
           <span :style="{ backgroundImage: `url(${require('@/assets/images/iStock-921987904.jpg')})` }" />
         </b-col>
       </b-row>
@@ -75,9 +104,9 @@
             <span>Cases de empresas</span>
             <svg width="8" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <defs>
-                <path d="M168.067 20.386l-4.773 5.1a.994.994 0 0 0 0 1.359.872.872 0 0 0 1.271 0l3.502-3.733 3.502 3.733a.872.872 0 0 0 1.272 0 .994.994 0 0 0 0-1.358l-4.774-5.101z" />
+                <path id="arrow" d="M168.067 20.386l-4.773 5.1a.994.994 0 0 0 0 1.359.872.872 0 0 0 1.271 0l3.502-3.733 3.502 3.733a.872.872 0 0 0 1.272 0 .994.994 0 0 0 0-1.358l-4.774-5.101z" />
               </defs>
-              <use fill="#fff" transform="rotate(90 95.067 -67.045)" xlink:href="#a" fill-rule="evenodd" />
+              <use fill="#fff" transform="rotate(90 95.067 -67.045)" xlink:href="#arrow" fill-rule="evenodd" />
             </svg>
           </b-button>
         </b-col>
@@ -127,14 +156,14 @@
 export default {
   layout: 'home',
   components: {
-    PHero: () => import('~/components/Hero.vue'),
+    PSlider: () => import('~/components/Slider.vue'),
     PSection: () => import('~/components/Section.vue'),
-    PSvgBars: () => import('~/components/svg/Bars.vue')
+    PSvgBars: () => import('~/components/Bars.vue')
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .section {
   &.section-2 {
     h2 {
@@ -174,7 +203,8 @@ export default {
     }
 
     .btn {
-      min-width: 210px;
+      width: 100%;
+      max-width: 210px;
     }
   }
 

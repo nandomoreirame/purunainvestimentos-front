@@ -1,6 +1,7 @@
 <template>
   <div class="hero" :style="{ backgroundImage: `url(${require('@/assets/images/iStock-953577456.jpg')})` }">
     <b-container class="inner">
+      <slot />
       <h1>Somos uma gestora de fundos especializada em Investimentos Alternativos.</h1>
     </b-container>
   </div>

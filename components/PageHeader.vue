@@ -6,7 +6,7 @@
           <h1 v-if="title" class="title" v-html="title" />
           <div v-if="description" class="description" v-html="description" />
         </b-col>
-        <b-col col md="6" class="column-image full-right">
+        <b-col col md="6" class="column-image right full-right">
           <span v-if="image" :style="{ backgroundImage: `url(${image})` }" />
         </b-col>
       </b-row>
@@ -54,7 +54,7 @@ export default {
 
   &,
   .column-image {
-    min-height: 690px;
+    min-height: calc(100vh - 120px);
   }
 }
 </style>

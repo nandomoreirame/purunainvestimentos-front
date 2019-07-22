@@ -7,8 +7,8 @@
 
     <b-container>
       <b-row>
-        <b-col col md="9" offset-md="2">
-          <h3>Form de contato...</h3>
+        <b-col col md="10" offset-md="1">
+          <p-form />
         </b-col>
       </b-row>
     </b-container>
@@ -18,7 +18,8 @@
 <script>
 export default {
   components: {
-    PPageHeader: () => import('~/components/PageHeader.vue')
+    PPageHeader: () => import('~/components/PageHeader.vue'),
+    PForm: () => import('~/components/Form.vue')
   }
 }
 </script>

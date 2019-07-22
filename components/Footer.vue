@@ -24,7 +24,7 @@ export default {
 <style lang="scss">
 .footer {
   .footer-top {
-    padding: 60px 0;
+    padding: 0 0 60px 0;
 
     a, p {
       font-size: 14px;

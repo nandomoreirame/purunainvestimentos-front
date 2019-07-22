@@ -34,12 +34,21 @@ h3 {
     display: block;
     position: absolute;
     top: 0;
-    left: 20px;
     height: 100%;
     width: 100%;
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &.left span {
+    right: 20px;
+  }
+
+  &.right span {
+    left: 20px;
   }
 
   &.full-right span {
@@ -56,8 +65,28 @@ h3 {
   align-items: center;
   justify-content: space-between;
 
-  &-dark {
-    background: #000;
+  span, svg {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  &-primary {
+    background-color: #007aff;
+    border-color: #007aff;
     color: #fff;
+
+    svg {
+      fill: #fff;
+    }
+  }
+
+  &-dark {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+
+    svg {
+      fill: #fff;
+    }
   }
 }

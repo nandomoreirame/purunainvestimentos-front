@@ -51,63 +51,67 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-.col-md-4,
-.col-right {
-  padding-top: 200px;
-  padding-bottom: 100px;
-}
+<style lang="scss">
+.section.box-info {
+  margin-bottom: 100px;
 
-.col-md-4 {
-  h3 {
-    font-family: Sarabun;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: -0.8px;
-    color: #000;
-    margin-bottom: 20px;
+  .col-md-4,
+  .col-right {
+    padding-top: 200px;
+    padding-bottom: 100px;
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 40px;
+  .col-md-4 {
+    h3 {
+      font-family: Sarabun;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: -0.8px;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px;
+    }
+
+    ul a {
+      font-size: 18px;
+      line-height: 1.56;
+      color: #007aff;
+    }
   }
 
-  ul a {
-    font-size: 18px;
-    line-height: 1.56;
-    color: #007aff;
-  }
-}
+  .col-right {
+    position: relative;
 
-.col-right {
-  position: relative;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200vh;
+      height: 100%;
+      background-color: #f3f3f3;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200vh;
-    height: 100%;
-    background-color: #f3f3f3;
-    pointer-events: none;
-    z-index: -1;
-  }
+    h3 {
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.82;
+      letter-spacing: 1px;
+      color: #000;
+    }
 
-  h3 {
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.82;
-    letter-spacing: 1px;
-    color: #000;
-  }
-
-  p {
-    font-size: 16px;
+    p {
+      font-size: 16px;
+    }
   }
 }
 </style>
