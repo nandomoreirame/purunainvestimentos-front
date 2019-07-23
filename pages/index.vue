@@ -44,8 +44,20 @@
             <p>Temos como proposta de negócio ser um elo entre empresas que necessitam de crédito e investidores que buscam oportunidades de investimentos por meio da Securitização de Ativos.</p>
           </div>
         </b-col>
-        <b-col col md="6" offset-md="1" class="column-image right full-right">
-          <span :data-bg="`${require('@/assets/images/iStock-922512798.jpg')}`" class="lazyload" />
+        <b-col
+          col
+          md="6"
+          offset-md="1"
+          class="column-image right full-right"
+          data-scroll="true"
+        >
+          <span
+            :data-bg="`${require('@/assets/images/iStock-922512798.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="1"
+            data-scroll-direction="horizontal"
+          />
         </b-col>
       </b-row>
     </p-section>
