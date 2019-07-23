@@ -17,6 +17,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'vue/no-v-html': 'off',
+    'arrow-parens': 'off',
     'vue/html-self-closing': 'off',
     'vue/singleline-html-element-content-newline': 'off'
   }
