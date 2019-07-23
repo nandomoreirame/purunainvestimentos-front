@@ -1,4 +1,4 @@
-# purunainvestimentos-nuxt
+# Purunainvestimentos.com.br with Nuxtjs
 
 > My striking Nuxt.js project
 
