@@ -1,7 +1,7 @@
 {
-  "name": "purunainvestimentos-nuxt",
+  "name": "purunainvestimentos",
   "version": "1.0.0",
-  "description": "My striking Nuxt.js project",
+  "description": "Somos uma gestora de fundos especializada em Investimentos Alternativos.",
   "author": "Fernando Moreira",
   "private": true,
   "scripts": {
