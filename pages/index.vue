@@ -78,8 +78,13 @@
           <h2>Experiência, competência e resultados que fazem a diferença em longo prazo.</h2>
           <p>A PURUNÃ Investimentos tem como premissas básicas de sua cultura de trabalho a priorização da gestão de riscos e o seu aperfeiçoamento constante. Para que assim, a gestora tenha anulado ou minimizado todos os riscos envolvidos nas operações e os investidores estejam confortáveis em explorar as oportunidades de investimentos.</p>
         </b-col>
-        <b-col col md="4" class="column-image right">
-          <span :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`" class="lazyload" />
+        <b-col
+          col
+          md="4"
+          class="column-image right"
+          data-scroll="true"
+        >
+          <span :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`" class="lazyload" data-scroll="true" data-scroll-speed="2" />
         </b-col>
       </b-row>
     </p-section>

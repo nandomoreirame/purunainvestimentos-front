@@ -49,8 +49,6 @@ export default {
   },
   methods: {
     slider (index = 0) {
-      console.info(`this.slider(${index})`)
-
       const { TweenMax, TimelineMax, Back } = require('gsap/all')
       const sliderItems = document.querySelectorAll('.slider-item')
       const item = sliderItems[index]

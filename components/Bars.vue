@@ -1,6 +1,13 @@
 <template>
-  <div class="bars">
-    <span v-for="(item, i) in items" :key="i" :style="item" class="bar" />
+  <div class="bars" data-scroll="true">
+    <span
+      v-for="(item, i) in items"
+      :key="i"
+      :style="item"
+      class="bar"
+      data-scroll="true"
+      :data-scroll-speed="i + 1"
+    />
   </div>
 </template>
 

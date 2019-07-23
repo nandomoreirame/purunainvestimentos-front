@@ -16,7 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,600,600i,800,800i&display=swap' },
+      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,600,600i,800,800i&display=swap' }
     ],
     script: [
       // { src: '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js' },
@@ -46,6 +46,7 @@ export default {
     // { src: '~/plugins/webfont.js', ssr: false },
     // { src: '~/plugins/animations.js', ssr: false },
     // { src: '~/plugins/slider.js', ssr: false },
+    { src: '~/plugins/locomotive-scroll.js', mode: 'client' },
     { src: '~/plugins/lazysizes.js', ssr: false }
   ],
 
@@ -82,7 +83,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, { isDev, isClient, loaders: { vue } }) {
+    extend (config, { isDev, isClient, loaders: { vue } }) {
       // Run ESLint on save
       if (isDev && isClient) {
         config.module.rules.push({
