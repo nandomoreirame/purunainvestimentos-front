@@ -17,5 +17,8 @@ export default ({ app }) => {
   app.router.afterEach(() => {
     scroll.destroy()
     window.onNuxtReady(setTimeout(() => scroll.init(), 300))
+
+    scroll.on('scroll', instance =>
+      __DOC__.setAttribute('data-direction', instance.direction))
   })
 }
