@@ -2,10 +2,10 @@
   <header :class="`header fixed ${white ? 'white' : 'dark'}`">
     <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'white'}`">
       <b-container>
-        <b-navbar-brand href="/">
+        <nuxt-link to="/" class="navbar-brand">
           <PLogoLight v-if="white" />
           <PLogoDark v-else />
-        </b-navbar-brand>
+        </nuxt-link>
 
         <b-navbar-toggle target="nav-collapse" />
 
