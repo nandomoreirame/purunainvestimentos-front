@@ -16,12 +16,16 @@ export default {
   margin-bottom: 150px;
 
   h2 {
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: -2px;
     color: #000;
     margin-bottom: 50px;
+
+    @media (min-width: 768px) {
+      font-size: 46px;
+    }
   }
 
   h3 {

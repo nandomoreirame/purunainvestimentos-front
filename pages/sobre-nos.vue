@@ -17,16 +17,17 @@
       </b-row>
       <b-row>
         <b-col col md="4">
-          <h3>Análise de Cenário</h3>
-          <p>Para a Estruturação de Fundo de Investimento em Direitos Creditórios (FIDC) levamos em consideração questões macroeconômicas, situação econômica financeira dos participantes envolvidos nas operações e ainda verificamos se o perfil dos investidores está de acordo com a relação entre risco e retorno do FIDC.</p>
+          <h3>Análise dos Fundamentos</h3>
+          <p>Para a estruturação do FIDC há o contato inicial com o cliente e o alinhamento dos interesses, coleta de informações e pré-análise do crédito, definição dos papéis e responsabilidades, análise do negócio como um todo, padronização das informações, revisão das projeções, análise da estrutura da operação e garantias e definição da estratégia, limites, covenants, triggers e uma classificação de risco para o cliente e a operação.</p>
         </b-col>
         <b-col col md="4">
           <h3>Estruturação do FIDC</h3>
-          <p>A estruturação é feita pela descrição do fluxo operacional, formalização adequada das operações e estudo dos prestadores de serviços envolvidos, tais como o Administrador e Custodiante dos FIDCs.</p>
+          <p>Nessa etapa verifica qual é o melhor prestador de serviço para executar as rotinas do FIDC, por exemplo, se o possível Custodiante do fundo possui capacidade tecnológica para o processamento de operações e controles internos adequados para a conciliação e guarde ativos.</p>
+          <p>Quanto ao Risco e Retorno é comparado com a indústria e pondera classificação de risco por meio do Comitê de Crédito, se realiza a Due Diligence da operação e por fim a formalização de crédito e liberação dos recursos.</p>
         </b-col>
         <b-col col md="4">
           <h3>Revisão e Monitoramento</h3>
-          <p>Todos os FIDCs são monitorados e revisados periodicamente de acordo com o risco de cada operação. Sendo aplicado variados testes descritos nas políticas de gerenciamento de riscos da PURUNÃ Investimentos, mas não se limitando a apenas estes.</p>
+          <p>O controle e acompanhamento dos FIDCs são feitos periodicamente de acordo com o risco de cada operação. São premissas básicas: a atualização das informações e reavaliações de classificação de risco, acompanhamento dos projetos de capital, triggers, covenants e garantias e por último a administração e gestão do risco.</p>
         </b-col>
       </b-row>
     </p-section>
@@ -135,6 +136,12 @@ export default {
     padding-bottom: 200px;
   }
 
+  &.section-1 {
+    h2 {
+      margin-bottom: 120px;
+    }
+  }
+
   &.section-2 {
     h2 {
       font-size: 48px;
@@ -155,6 +162,8 @@ export default {
   }
 
   &.section-3 {
+    text-align: right;
+
     .column-image.right,
     .column-image.right span {
       min-height: 420px;

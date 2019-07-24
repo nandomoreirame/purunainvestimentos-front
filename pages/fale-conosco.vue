@@ -1,7 +1,7 @@
 <template>
   <div>
     <p-page-header
-      title="Fale conosco"
+      :title="`Fale <br /> conosco`"
       :image="`${require('@/assets/images/iStock-937239290.jpg')}`"
     />
 

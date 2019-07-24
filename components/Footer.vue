@@ -3,7 +3,7 @@
     <b-container>
       <b-row class="footer-top">
         <b-col col md="3" offset-md="4">
-          <nuxt-link to="/politica-de-privacidade">Política de privacidade</nuxt-link>  •  <nuxt-link to="/termos-de-uso">Termos de uso</nuxt-link>
+          <nuxt-link to="/politica-e-privacidade">Política e privacidade</nuxt-link>  •  <nuxt-link to="/termos-de-uso">Termos de uso</nuxt-link>
         </b-col>
         <b-col col md="5">
           <p>©2019 Purunã Investimentos . Todos os direitos reservados.</p>

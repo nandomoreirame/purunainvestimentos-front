@@ -19,8 +19,10 @@
         </ul>
 
         <h3>Siga-nos</h3>
-        <a href="#"><p-icon-instagram /></a>
-        <a href="#"><p-icon-linkedin /></a>
+        <div class="social">
+          <p-icon-instagram />
+          <p-icon-linkedin />
+        </div>
       </b-col>
       <b-col col md="7" class="col-right">
         <b-row>
@@ -54,6 +56,24 @@ export default {
 <style lang="scss">
 .section.box-info {
   margin-bottom: 100px;
+
+  .social {
+    svg path {
+      fill: #fff;
+      &:first-child {
+        fill: #cfcfcf;
+      }
+    }
+
+    a:hover {
+      svg path {
+        fill: #fff;
+        &:first-child {
+          fill: #007aff;
+        }
+      }
+    }
+  }
 
   .col-md-4,
   .col-right {

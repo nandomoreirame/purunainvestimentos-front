@@ -2,10 +2,10 @@
   <div>
     <p-page-header
       title="Fundos de Investimentos para o setor produtivo do Brasil"
-      :image="`${require('@/assets/images/iStock-627199152.jpg')}`"
+      :image="`${require('@/assets/images/iStock-826276534.jpg')}`"
     />
 
-    <p-section class="section-2">
+    <p-section class="section-2 downloads">
       <b-row>
         <b-col col md="2" offset-md="1">
           <p-colors-bars />
@@ -13,7 +13,7 @@
         <b-col col md="9">
           <h2>Informações importantes para nossos investidores</h2>
 
-          <b-row class="downloads">
+          <b-row>
             <b-col v-for="(downloadItem, i) in downloadItems" :key="i" col md="4" class="downloads-item">
               <a :href="`/downloads/${downloadItem.file}`" target="_blank">
                 {{ downloadItem.title }}
@@ -67,44 +67,76 @@ export default {
 </script>
 
 <style lang="scss">
-.downloads {
-  &-item {
-    a {
-      width: 100%;
-      display: block;
-      min-height: 200px;
-      transition: background-color .12s ease-in-out, color .12s ease-in-out;
-      padding: 40px;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.09;
-      color: #000;
+.section.section-2 {
+  &.downloads {
+    h2 {
+      font-size: 48px;
+      line-height: 1.25;
+      letter-spacing: -2px;
+      margin-bottom: 40px;
+    }
+  }
 
-      span {
+  .downloads {
+    &-item {
+      a {
+        width: 100%;
         display: block;
-        margin-top: 40px;
-        opacity: 0;
-        transition: opacity .12s ease-in-out;
-        font-size: 12px;
+        min-height: 200px;
+        transition: background-color .15s ease-in-out, color .15s ease-in-out;
+        padding: 40px;
+        font-size: 22px;
         font-weight: 800;
-        line-height: 1.67;
-        color: inherit;
-        text-transform: uppercase;
+        line-height: 1.09;
+        color: #000;
+        position: relative;
+        margin-bottom: 30px;
+        margin-top: 30px;
 
-        svg {
-          display: inline-block;
-          vertical-align: middle;
-          margin-left: 40px;
+        &::before {
+          content: '';
+          width: 100%;
+          height: 1px;
+          display: block;
+          background-color: #007aff;
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          transition: all .15s ease-in-out;
+          z-index: -1;
         }
-      }
 
-      &:hover,
-      &:focus {
-        background-color: #007aff;
-        text-decoration: none;
-        color: #fff;
+        span {
+          display: block;
+          margin-top: 40px;
+          opacity: 0;
+          transition: opacity .15s ease-in-out;
+          font-size: 12px;
+          font-weight: 800;
+          line-height: 1.67;
+          color: inherit;
+          text-transform: uppercase;
 
-        span { opacity: 1; }
+          svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 40px;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          // background-color: #007aff;
+          text-decoration: none;
+          color: #fff;
+
+          &::before {
+            height: 100%;
+          }
+
+          span { opacity: 1; }
+        }
       }
     }
   }

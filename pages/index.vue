@@ -4,7 +4,7 @@
 
     <p-section class="section-1">
       <b-row>
-        <b-col col md="4" offset-md="1">
+        <b-col col md="4" offset-md="1" sm="12">
           <h2>Experiência, competência e resultados que fazem a diferença em longo prazo.</h2>
           <div>
             <h3>Fundos de investimentos estruturados</h3>
@@ -19,6 +19,7 @@
           col
           md="6"
           offset-md="1"
+          sm="12"
           class="column-image right full-right"
           data-scroll="true"
         >
@@ -26,7 +27,7 @@
             :data-bg="`${require('@/assets/images/iStock-922512798.jpg')}`"
             class="lazyload"
             data-scroll="true"
-            data-scroll-speed="1"
+            data-scroll-speed="0.3"
             data-scroll-direction="horizontal"
           />
         </b-col>
@@ -35,18 +36,18 @@
 
     <p-section class="section-2">
       <b-row>
-        <b-col col md="3" offset-md="1">
+        <b-col col md="3" sm="12" offset-md="1">
           <p-colors-bars />
         </b-col>
-        <b-col col md="8">
+        <b-col col md="8" sm="12">
           <h2>Desintermediação financeira e investimentos arrojados através de FIDC.</h2>
 
           <b-row>
-            <b-col col md="6">
+            <b-col col md="6" sm="12">
               <p>O FIDC é uma forma de eliminar intermediários financeiros de operações de crédito por meio da Securitização de Ativos. Com isso, as empresas podem transformar ativos de baixa liquidez em valores mobiliários e respectivamente ter acesso a linhas de crédito mais vantajosas.</p>
               <p>Pelo lado dos investidores, o FIDC é uma forma de diversificação de investimentos no qual oferece taxa de rentabilidade superior se comparado a muitos outros ativos financeiros e conta com instrumentos de proteção como, por exemplo, alienação fiduciária e subordinação de cotas.</p>
             </b-col>
-            <b-col col md="6">
+            <b-col col md="6" sm="12">
               <p>O FIDC também é uma forma de planejamento tributário. Portanto muitas operações financeiras que são tributadas em ISS, IR, CSLL e IOF são isentas se feitas por meio destes fundos, ou seja, os custos diminuem e tanto as empresas como os investidores são beneficiados.</p>
               <p>Logo, a Securitização de Ativos por meio de FIDC alinha os objetivos de investidores na alocação de seus recursos financeiros e empresas que necessitam de fontes de financiamento de suas operações.</p>
             </b-col>
@@ -93,26 +94,28 @@
       </b-row>
       <b-row>
         <b-col col md="10" offset-md="1">
-          <b-button variant="dark">
-            <span>Cases de empresas</span>
+          <nuxt-link to="/fale-conosco" class="btn btn-dark">
+            <span>Abra um FIDC com a gente</span>
             <svg width="8" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <defs>
                 <path id="arrow" d="M168.067 20.386l-4.773 5.1a.994.994 0 0 0 0 1.359.872.872 0 0 0 1.271 0l3.502-3.733 3.502 3.733a.872.872 0 0 0 1.272 0 .994.994 0 0 0 0-1.358l-4.774-5.101z" />
               </defs>
               <use fill="#fff" transform="rotate(90 95.067 -67.045)" xlink:href="#arrow" fill-rule="evenodd" />
             </svg>
-          </b-button>
+          </nuxt-link>
         </b-col>
       </b-row>
     </p-section>
 
     <p-section class="section-5">
       <b-row>
-        <b-col col md="3">
-          <h2>Os FIDCs são fundos de investimentos que impulsionam o crescimento do país e atuam nos mais variados segmentos da econômia.</h2>
+        <b-col col md="7" offset-md="1">
+          <h2>Classificações de FIDC</h2>
+          <h3>Os FIDCs são fundos de investimentos que impulsionam o crescimento do país e atuam nos mais variados segmentos da econômia.</h3>
         </b-col>
-        <b-col col md="3">
-          <h3>Classificações de FIDC</h3>
+      </b-row>
+      <b-row>
+        <b-col col md="3" offset-md="3">
           <ul>
             <li>Fomento Mercantil Agro, Indústria e Comércio</li>
             <li>Infraestrutura</li>
@@ -123,7 +126,6 @@
           </ul>
         </b-col>
         <b-col col md="3">
-          <h3>Classificações de FIDC</h3>
           <ul>
             <li>Crédito Imobiliário</li>
             <li>Crédito Consignado</li>
@@ -133,7 +135,6 @@
           </ul>
         </b-col>
         <b-col col md="3">
-          <h3>Classificações de FIDC</h3>
           <ul>
             <li>Recuperação (Non Performing Loans)</li>
             <li>Poder Público</li>
@@ -160,10 +161,14 @@ export default {
 .section {
   &.section-2 {
     h2 {
-      font-size: 60px;
+      font-size: 30px;
       line-height: 1.17;
       letter-spacing: -2px;
       margin-bottom: 60px;
+
+      @media (min-width: 768px) {
+        font-size: 60px;
+      }
     }
 
     .bars {
@@ -197,26 +202,29 @@ export default {
 
     .btn {
       width: 100%;
-      max-width: 210px;
+      max-width: 250px;
     }
   }
 
   &.section-5 {
     h2 {
-      font-size: 24px;
+      font-size: 48px;
       font-weight: 800;
-      line-height: 1.5;
-      letter-spacing: -0.8px;
+      line-height: 1.25;
+      letter-spacing: -2px;
       color: #000;
+      margin-bottom: 30px;
     }
 
     h3 {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: 800;
-      line-height: 1.78;
       color: #000;
-      text-transform: initial;
+      line-height: 1.5;
+      letter-spacing: -0.8px;
       letter-spacing: initial;
+      text-transform: initial;
+      margin-bottom: 60px;
     }
 
     ul {
