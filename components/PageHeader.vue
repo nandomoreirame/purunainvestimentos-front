@@ -7,7 +7,7 @@
           <div class="description" v-html="description" />
         </b-col>
         <b-col col md="6" class="column-image right full-right">
-          <span v-if="image" class="lazyload" :data-bg="image" />
+          <span v-if="image" :style="{ backgroundImage: `url(${image})` }" />
         </b-col>
       </b-row>
     </b-container>

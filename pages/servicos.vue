@@ -20,8 +20,19 @@
           <span>Selecionar</span>
         </b-col>
         <b-col col md="6" offset-md="1" class="column-image right full-right">
-          <span :data-bg="`${require('@/assets/images/iStock-508221156.jpg')}`" class="lazyload" />
-          <div class="black-block">
+          <span
+            :data-bg="`${require('@/assets/images/iStock-508221156.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="-0.3"
+            data-scroll-direction="horizontal"
+          />
+          <div
+            class="black-block"
+            data-scroll="true"
+            data-scroll-speed="0.2"
+            data-scroll-direction="horizontal"
+          >
             <b-row>
               <b-col col md="4">
                 <h3>Detalhes do serviço</h3>
@@ -31,7 +42,7 @@
               </b-col>
             </b-row>
           </div>
-          <p-svg-bars />
+          <p-colors-bars />
         </b-col>
       </b-row>
     </p-section>
@@ -46,7 +57,7 @@ export default {
     PBoxCta: () => import('~/components/BoxCta.vue'),
     PSection: () => import('~/components/Section.vue'),
     PPageHeader: () => import('~/components/PageHeader.vue'),
-    PSvgBars: () => import('~/components/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue')
   }
 }
 </script>

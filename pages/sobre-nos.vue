@@ -9,20 +9,20 @@
     <p-section class="section-1">
       <b-row>
         <b-col col md="3" offset-md="1">
-          <p-svg-bars />
+          <p-colors-bars />
         </b-col>
         <b-col col md="7">
-          <h2 data-scroll="true" data-scroll-speed="1">Como construímos nossos fundos de investimentos.</h2>
+          <h2>Como construímos nossos fundos de investimentos.</h2>
         </b-col>
       </b-row>
       <b-row>
         <b-col col md="4">
-          <h3 data-scroll="true" data-scroll-speed="1">Análise de Cenário</h3>
-          <p data-scroll="true" data-scroll-speed="2">Para a Estruturação de Fundo de Investimento em Direitos Creditórios (FIDC) levamos em consideração questões macroeconômicas, situação econômica financeira dos participantes envolvidos nas operações e ainda verificamos se o perfil dos investidores está de acordo com a relação entre risco e retorno do FIDC.</p>
+          <h3>Análise de Cenário</h3>
+          <p>Para a Estruturação de Fundo de Investimento em Direitos Creditórios (FIDC) levamos em consideração questões macroeconômicas, situação econômica financeira dos participantes envolvidos nas operações e ainda verificamos se o perfil dos investidores está de acordo com a relação entre risco e retorno do FIDC.</p>
         </b-col>
         <b-col col md="4">
-          <h3 data-scroll="true" data-scroll-speed="1">Estruturação do FIDC</h3>
-          <p data-scroll="true" data-scroll-speed="2">A estruturação é feita pela descrição do fluxo operacional, formalização adequada das operações e estudo dos prestadores de serviços envolvidos, tais como o Administrador e Custodiante dos FIDCs.</p>
+          <h3>Estruturação do FIDC</h3>
+          <p>A estruturação é feita pela descrição do fluxo operacional, formalização adequada das operações e estudo dos prestadores de serviços envolvidos, tais como o Administrador e Custodiante dos FIDCs.</p>
         </b-col>
         <b-col col md="4">
           <h3>Revisão e Monitoramento</h3>
@@ -33,8 +33,14 @@
 
     <p-section class="section-2">
       <b-row>
-        <b-col col md="7" class="column-image left" offset-md="1">
-          <span :data-bg="`${require('@/assets/images/iStock-931230100.jpg')}`" class="lazyload" />
+        <b-col col md="7" class="column-image left" offset-md="1" data-scroll="true">
+          <span
+            :data-bg="`${require('@/assets/images/iStock-931230100.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="-0.2"
+            data-scroll-direction="horizontal"
+          />
         </b-col>
         <b-col col md="4">
           <h2>Valores da Organização</h2>
@@ -47,6 +53,11 @@
           </ul>
         </b-col>
       </b-row>
+      <b-row>
+        <b-col col md="2" offset-md="10" data-scroll="true">
+          <p-colors-bars />
+        </b-col>
+      </b-row>
     </p-section>
 
     <p-section class="section-3">
@@ -56,7 +67,18 @@
           <p>Encontrar e viabilizar as melhores investimentos e instrumentos financeiros para agentes deficitários (empresas) e agentes superavitários (investidores) de recursos financeiros.</p>
         </b-col>
         <b-col col md="6" class="column-image right">
-          <span :data-bg="`${require('@/assets/images/iStock-952625346.jpg')}`" class="lazyload" />
+          <span
+            :data-bg="`${require('@/assets/images/iStock-952625346.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="-0.3"
+            data-scroll-direction="horizontal"
+          />
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col col md="2" offset-md="1" data-scroll="true">
+          <p-colors-bars />
         </b-col>
       </b-row>
     </p-section>
@@ -71,7 +93,13 @@
         </b-col>
         <b-col col md="1" />
         <b-col col md="5" class="column-image right">
-          <span :data-bg="`${require('@/assets/images/iStock-1043539212.jpg')}`" class="lazyload" />
+          <span
+            :data-bg="`${require('@/assets/images/iStock-1043539212.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="0.5"
+            data-scroll-direction="horizontal"
+          />
         </b-col>
       </b-row>
     </p-section>
@@ -90,7 +118,7 @@ export default {
     PPageHeader: () => import('~/components/PageHeader.vue'),
     PSection: () => import('~/components/Section.vue'),
     PBoxCta: () => import('~/components/BoxCta.vue'),
-    PSvgBars: () => import('~/components/svg/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue')
   },
   data () {
     return {
@@ -102,6 +130,11 @@ export default {
 
 <style lang="scss" scoped>
 .section {
+  &.section-2,
+  &.section-3 {
+    padding-bottom: 200px;
+  }
+
   &.section-2 {
     h2 {
       font-size: 48px;

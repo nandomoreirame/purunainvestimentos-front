@@ -1,8 +1,15 @@
 <template>
   <section class="slider">
     <div class="slider-items">
-      <div v-for="(item, k) in items" :key="k" class="slider-item lazyload" :data-bg="`${require(`@/assets/images/${item.image}`)}`">
+      <div v-for="(item, k) in items" :key="k" class="slider-item" :style="{ backgroundImage: `url(${require(`@/assets/images/${item.image}`)})` }">
         <b-container class="slider-inner">
+          <p-colors-bars
+            :items="[
+              { top: '0px', left: '600px', width: '320px', height: '15px', borderRadius: '10px' },
+              { top: '110px', left: '320px', width: '500px', height: '25px', borderRadius: '20px' },
+              { top: '-120px', left: '260px', width: '500px', height: '50px', borderRadius: '30px' }
+            ]"
+          />
           <small class="slider-count" v-text="`0${(k + 1)}/0${items.length}`" />
           <h2 v-text="item.text" />
         </b-container>
@@ -26,6 +33,9 @@
 
 <script>
 export default {
+  components: {
+    PColorsBars: () => import('~/components/Bars.vue')
+  },
   props: {
     items: {
       type: Array,
@@ -156,6 +166,16 @@ export default {
     opacity: 0;
     top: 0;
     left: 0;
+
+    .bars {
+      z-index: 1;
+    }
+
+    small,
+    h2 {
+      position: relative;
+      z-index: 10;
+    }
 
     &:first-child {
       opacity: 1;

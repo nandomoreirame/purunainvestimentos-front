@@ -8,7 +8,7 @@
     <p-section class="section-2">
       <b-row>
         <b-col col md="2" offset-md="1">
-          <p-svg-bars />
+          <p-colors-bars />
         </b-col>
         <b-col col md="9">
           <h2>Informações importantes para nossos investidores</h2>
@@ -43,7 +43,7 @@ export default {
     PBoxCta: () => import('~/components/BoxCta.vue'),
     PSection: () => import('~/components/Section.vue'),
     PPageHeader: () => import('~/components/PageHeader.vue'),
-    PSvgBars: () => import('~/components/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue')
   },
   data () {
     return {

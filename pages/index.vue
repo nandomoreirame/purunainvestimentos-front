@@ -1,35 +1,6 @@
 <template>
   <div class="home">
     <p-slider />
-    <!--
-    <p-hero>
-      <p-svg-bars
-        :items="[
-          {
-            top: '70px',
-            left: '585px',
-            width: '320px',
-            height: '15px',
-            borderRadius: '10px'
-          },
-          {
-            top: '110px',
-            left: '320px',
-            width: '500px',
-            height: '25px',
-            borderRadius: '20px'
-          },
-          {
-            top: '-120px',
-            left: '260px',
-            width: '500px',
-            height: '50px',
-            borderRadius: '30px'
-          }
-        ]"
-      />
-    </p-hero>
-    -->
 
     <p-section class="section-1">
       <b-row>
@@ -65,7 +36,7 @@
     <p-section class="section-2">
       <b-row>
         <b-col col md="3" offset-md="1">
-          <p-svg-bars />
+          <p-colors-bars />
         </b-col>
         <b-col col md="8">
           <h2>Desintermediação financeira e investimentos arrojados através de FIDC.</h2>
@@ -96,12 +67,17 @@
           class="column-image right"
           data-scroll="true"
         >
-          <span :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`" class="lazyload" data-scroll="true" data-scroll-speed="2" />
+          <span
+            :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`"
+            class="lazyload"
+            data-scroll="true"
+            data-scroll-speed="0.65"
+          />
         </b-col>
       </b-row>
     </p-section>
 
-    <p-section class="section-4">
+    <p-section class="section-4" data-scroll="true" data-scroll-speed="0.5">
       <b-row>
         <b-col col md="10" offset-md="1">
           <h2>Faça sua empresa crescer, conheça as formas e usos dos FIDCs</h2>
@@ -175,7 +151,7 @@ export default {
   components: {
     PSlider: () => import('~/components/Slider.vue'),
     PSection: () => import('~/components/Section.vue'),
-    PSvgBars: () => import('~/components/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue')
   }
 }
 </script>
