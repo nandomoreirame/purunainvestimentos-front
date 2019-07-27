@@ -117,7 +117,7 @@
       <b-row>
         <b-col col md="3" offset-md="3">
           <ul>
-            <li>Fomento Mercantil Agro, Indústria e Comércio</li>
+            <li>Fomento Mercantil</li>
             <li>Infraestrutura</li>
             <li>Recebíveis Comerciais</li>
             <li>Crédito Corporativo</li>
@@ -136,7 +136,7 @@
         </b-col>
         <b-col col md="3">
           <ul>
-            <li>Recuperação (Non Performing Loans)</li>
+            <li>Recuperação <em>(Non Performing Loans)</em></li>
             <li>Poder Público</li>
             <li>Multicarteira (outros)</li>
           </ul>

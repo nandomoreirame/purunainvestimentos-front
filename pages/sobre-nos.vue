@@ -45,7 +45,7 @@
         </b-col>
         <b-col col md="4">
           <h2>Valores da Organização</h2>
-          <ul>
+          <ul data-scroll="true">
             <li>Integridade</li>
             <li>Responsabilidade</li>
             <li>Simplicidade</li>
@@ -125,6 +125,13 @@ export default {
     return {
       paragraphs
     }
+  // },
+  // asyncData () {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => { // eslint-disable-line
+  //       resolve()
+  //     }, 1000)
+  //   })
   }
 }
 </script>
@@ -152,6 +159,25 @@ export default {
       list-style: none;
       padding: 0;
       margin-bottom: 40px;
+
+      li {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: opacity .6s cubic-bezier(.215,.61,.355,1), transform .6s cubic-bezier(.215,.61,.355,1);
+      }
+
+      &.is-inview {
+        li {
+          transform: none;
+          opacity: 1;
+
+          &:nth-child(1) { transition-delay: .1s; }
+          &:nth-child(2) { transition-delay: .2s; }
+          &:nth-child(3) { transition-delay: .3s; }
+          &:nth-child(4) { transition-delay: .4s; }
+          &:nth-child(5) { transition-delay: .5s; }
+        }
+      }
     }
 
     li, p {

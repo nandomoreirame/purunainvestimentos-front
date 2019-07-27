@@ -167,3 +167,6 @@ h3 {
 .c-scrollbar_thumb:hover {
   cursor: pointer
 }
+
+.page-enter-active, .page-leave-active { transition: opacity .25s; }
+.page-enter, .page-leave-active { opacity: 0; }

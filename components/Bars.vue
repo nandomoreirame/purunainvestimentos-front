@@ -1,6 +1,6 @@
 <template>
   <div class="bars" data-scroll="true">
-    <div v-for="(item, i) in items" :key="i" data-scroll="true" :data-scroll-speed="(i - 1) * velocity">
+    <div v-for="(item, i) in items" :key="i">
       <span :style="item" class="bar" />
     </div>
   </div>
@@ -32,7 +32,12 @@ export default {
   left: -60px;
   z-index: -1;
 
-  div {
+  > div {
+    opacity: 0;
+    transform: translate3d(0, 60px, 0);
+    transition: opacity .6s cubic-bezier(.215,.61,.355,1),
+      transform .6s cubic-bezier(.215,.61,.355,1);
+
     &:nth-child(1),
     &:nth-child(3) {
       span { background-color: #007aff; }
@@ -45,6 +50,17 @@ export default {
     display: inline-block;
     position: absolute;
     transform: rotate(50deg);
+  }
+
+  &.is-inview {
+    > div {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+
+      &:nth-child(1) { transition-delay: .2s; }
+      &:nth-child(2) { transition-delay: .4s; }
+      &:nth-child(3) { transition-delay: .6s; }
+    }
   }
 }
 </style>
