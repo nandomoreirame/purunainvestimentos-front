@@ -8,8 +8,8 @@
     <b-container>
       <b-row>
         <b-col col md="9" offset-md="2" class="page-politica-e-privacidade">
-          <h3 v-if="terms.title" class="title" v-text="terms.title.rendered" />
-          <div v-if="terms.content" class="content" v-html="terms.content.rendered" />
+          <h3 v-if="Object.keys(terms).length && terms.title" class="page-title" v-text="terms.title.rendered" />
+          <div v-if="Object.keys(terms).length && terms.content" class="page-content" v-html="terms.content.rendered" />
         </b-col>
       </b-row>
     </b-container>
