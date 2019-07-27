@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const http = axios.create({
-  baseURL: `https://painel.purunainvestimentos.com.br`,
+  baseURL: `${isProduction ? 'https://painel' : 'http://dev'}.purunainvestimentos.com.br`,
   headers: {}
 })
 
