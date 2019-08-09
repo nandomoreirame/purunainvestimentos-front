@@ -9,10 +9,13 @@ import {
 
 export default {
   mode: 'universal',
-
-  /*
-   ** Headers of the page
-   */
+  env: {
+    baseUrl: siteBaseUrl,
+    baseTitle: title,
+    baseDescription: description,
+    baseKeywords: 'gestora, investimento, securitização, desintermediação, ativos, experiência, competência, resultados, investimentos, fundos',
+    imageDefault: '/share.jpg'
+  },
   head: {
     title,
     titleTemplate: titleTemplate => titleTemplate ? `${titleTemplate} | Purunã Investimentos` : `Purunã Investimentos`,
@@ -53,10 +56,6 @@ export default {
     script: [
     ]
   },
-
-  /*
-   ** PWA Configuration
-   */
   manifest: {
     name: title,
     short_name: title,
@@ -65,27 +64,15 @@ export default {
     display: 'standalone',
     description
   },
-
-  /*
-   ** Customize the progress-bar color
-   */
   loading: {
     color: theme.color,
     height: '4px',
     continuous: true
   },
   // loading: '~/components/Loading.vue',
-
-  /*
-   ** Global CSS
-   */
   css: [
     '@/assets/sass/style.scss'
   ],
-
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [
     // { src: '~/plugins/webfont.js', ssr: false },
     // { src: '~/plugins/animations.js', ssr: false },
@@ -93,10 +80,6 @@ export default {
     { src: '~/plugins/locomotive-scroll.js', mode: 'client' },
     { src: '~/plugins/lazysizes.js', ssr: false }
   ],
-
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
@@ -106,23 +89,16 @@ export default {
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     'bootstrap-vue/nuxt'
   ],
-
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
     bootstrapVueCSS: false // Or `bvCSS: false`
   },
-
-  /*
-   ** Axios module configuration
-   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
   router: {
     linkActiveClass: 'active'
   },
-
   'google-analytics': {
     id: isProduction ? 'UA-0000000-1' : 'UA-0000000-1',
     debug: {
@@ -131,10 +107,6 @@ export default {
       sendHitTask: isProduction
     }
   },
-
-  /*
-   ** Build configuration
-   */
   build: {
     vendor: [
     ],

@@ -1,5 +1,6 @@
 <template>
   <div class="page-header">
+    <p-meta-tags :title="title" :description="description" :url="url" />
     <b-container>
       <b-row align-v="center">
         <b-col col md="5" sm="12" offset-md="1">
@@ -24,9 +25,14 @@
 <script>
 export default {
   components: {
-    PColorsBars: () => import('~/components/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue'),
+    PMetaTags: () => import('~/components/MetaTags.vue')
   },
   props: {
+    url: {
+      type: String,
+      default: process.env.baseUrl
+    },
     title: {
       type: String,
       default: ''

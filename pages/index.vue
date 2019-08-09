@@ -2,6 +2,11 @@
   <div class="home">
     <p-slider />
 
+    <p-meta-tags
+      title="Fundos de investimentos estruturados"
+      description="Experiência, competência e resultados que fazem a diferença em longo prazo"
+    />
+
     <p-section class="section-1">
       <b-row>
         <b-col col md="4" offset-md="1" sm="12">
@@ -152,7 +157,8 @@ export default {
   components: {
     PSlider: () => import('~/components/Slider.vue'),
     PSection: () => import('~/components/Section.vue'),
-    PColorsBars: () => import('~/components/Bars.vue')
+    PColorsBars: () => import('~/components/Bars.vue'),
+    PMetaTags: () => import('~/components/MetaTags.vue')
   }
 }
 </script>
