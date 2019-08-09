@@ -3,3 +3,16 @@
 @import "~bootstrap/scss/mixins";
 
 $font-family-base: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// ) !default;
+
+$sm: map-get($grid-breakpoints, "sm"); // 576px
+$md: map-get($grid-breakpoints, "md"); // 768px
+$lg: map-get($grid-breakpoints, "lg"); // 992px
+$xl: map-get($grid-breakpoints, "xl"); // 1200px

@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section.box-cta {
   background-color: #1c1c1c;
   padding-top: 150px;
@@ -43,6 +46,10 @@ export default {
     line-height: 1.17;
     letter-spacing: -2px;
     color: #fff;
+
+    @include media(max-width $sm) {
+      font-size: 42px;
+    }
   }
 
   .btn.btn-primary {

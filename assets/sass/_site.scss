@@ -108,16 +108,18 @@ h3 {
     pointer-events: none;
   }
 
-  &.left span {
-    right: 20px;
-  }
+  @include media(min-width $sm) {
+    &.left span {
+      right: 20px;
+    }
 
-  &.right span {
-    left: 20px;
-  }
+    &.right span {
+      left: 20px;
+    }
 
-  &.full-right span {
-    width: 50vw;
+    &.full-right span {
+      width: 50vw;
+    }
   }
 }
 

@@ -12,19 +12,30 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section {
   margin-bottom: 150px;
 
+  @include media(max-width $md) {
+    .row {
+      display: block;
+      width: 100%;
+      // margin: auto;
+    }
+  }
+
   h2 {
-    font-size: 36px;
+    font-size: 46px;
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: -2px;
     color: #000;
     margin-bottom: 50px;
 
-    @media (min-width: 768px) {
-      font-size: 46px;
+    @include media(max-width $md) {
+      font-size: 36px;
     }
   }
 
@@ -40,6 +51,10 @@ export default {
 
   p {
     font-size: 16px;
+
+    @include media(max-width $sm) {
+      font-size: 14px;
+    }
   }
 }
 </style>

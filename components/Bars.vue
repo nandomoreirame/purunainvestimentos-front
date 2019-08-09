@@ -26,11 +26,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .bars {
   position: absolute;
   pointer-events: none;
   left: -60px;
   z-index: -1;
+
+  @include media(max-width $sm) {
+    left: 0;
+  }
 
   > div {
     opacity: 0;

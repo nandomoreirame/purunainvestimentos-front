@@ -2,7 +2,7 @@
   <div>
     <p-page-header
       title="Fundos de Investimentos para o setor produtivo do Brasil"
-      :image="`${require('@/assets/images/iStock-826276534.jpg')}`"
+      :page="page"
     />
 
     <p-section class="section-2 downloads">
@@ -14,9 +14,9 @@
           <h2>Informações importantes para nossos investidores</h2>
 
           <b-row>
-            <b-col v-for="(downloadItem, i) in downloadItems" :key="i" col md="4" class="downloads-item">
-              <a :href="`/downloads/${downloadItem.file}`" target="_blank">
-                {{ downloadItem.title }}
+            <b-col v-for="(item, i) in downloads" :key="i" col md="4" class="downloads-item">
+              <a :href="item.download_file" target="_blank">
+                {{ item.title.rendered }}
                 <span>
                   Download
                   <svg width="7" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -38,6 +38,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import service from '@/service'
+
+const slug = 'para-o-investidor'
+
 export default {
   components: {
     PBoxCta: () => import('~/components/BoxCta.vue'),
@@ -45,22 +50,32 @@ export default {
     PPageHeader: () => import('~/components/PageHeader.vue'),
     PColorsBars: () => import('~/components/Bars.vue')
   },
-  data () {
-    return {
-      downloadItems: []
-    }
+  computed: {
+    ...mapState({
+      page: ({ wordpress }) => wordpress.pages[slug],
+      downloads: ({ wordpress }) => wordpress.downloads
+    })
   },
-  asyncData () {
-    return {
-      downloadItems: [
-        { title: 'Código de Conduta e Ética', file: 'codigo-de-conduta-e-etica.pdf' },
-        { title: 'Formulário de Referência', file: 'formulario-de-referencia.pdf' },
-        { title: 'Manual de Procedimentos Internos', file: 'manual-de-procedimentos-internos.pdf' },
-        { title: 'Política de Exercício de Direito de Voto', file: 'politica-de-exercicio-de-direito-de-voto.pdf' },
-        { title: 'Política de Gestão de Riscos', file: 'politica-de-gestao-de-riscos.pdf' },
-        { title: 'Política de Investimentos Pessoais', file: 'politica-de-investimentos-pessoais.pdf' },
-        { title: 'Política de Rateio e Divisão de Ordens', file: 'politica-de-rateio-e-divisao-de-ordens.pdf' }
-      ]
+  async fetch ({ store, error }) {
+    const { pages, downloads } = store.state.wordpress
+
+    if (!Object.keys(pages[slug]).length) {
+      await service.page(slug)
+        .then(({ page }) => {
+          if (page.length <= 0) {
+            return error({ statusCode: 404, message: `Página não encontrada!` })
+          }
+
+          store.commit('wordpress/CHANGE_PAGE', { slug, page })
+        })
+        .catch(err => console.error(err))
+    }
+
+    if (!downloads.length) {
+      await service.downloads()
+        .then(({ downloads }) =>
+          store.commit('wordpress/CHANGE_DOWNLOADS', downloads))
+        .catch(err => console.error(err))
     }
   }
 }

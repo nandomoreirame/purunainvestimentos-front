@@ -158,22 +158,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section {
   &.section-2 {
     h2 {
-      font-size: 30px;
+      font-size: 60px;
       line-height: 1.17;
       letter-spacing: -2px;
       margin-bottom: 60px;
 
-      @media (min-width: 768px) {
-        font-size: 60px;
+      @include media(max-width $sm) {
+       font-size: 30px;
+      }
+    }
+
+    @include media(max-width $md) {
+      .col-md-3 {
+        height: 280px;
       }
     }
 
     .bars {
       position: relative;
       top: 100px;
+
+      @include media(max-width $md) {
+        top: 0;
+      }
     }
   }
 
@@ -198,6 +211,14 @@ export default {
       font-size: 60px;
       line-height: 1.17;
       margin-bottom: 60px;
+
+      @include media(max-width $md) {
+        font-size: 42px;
+      }
+
+      @include media(max-width $sm) {
+        font-size: 38px;
+      }
     }
 
     .btn {
@@ -214,6 +235,10 @@ export default {
       letter-spacing: -2px;
       color: #000;
       margin-bottom: 30px;
+
+      @include media(max-width $sm) {
+        font-size: 40px;
+      }
     }
 
     h3 {
@@ -225,12 +250,22 @@ export default {
       letter-spacing: initial;
       text-transform: initial;
       margin-bottom: 60px;
+
+      @include media(max-width $sm) {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 40px;
+      }
     }
 
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
+
+      @include media(max-width $sm) {
+        padding-left: 10px;
+      }
 
       li {
         font-size: 16px;

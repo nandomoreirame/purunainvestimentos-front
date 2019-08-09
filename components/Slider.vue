@@ -88,6 +88,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .slider {
   width: 100vw;
   height: 100vh;
@@ -96,10 +99,18 @@ export default {
   position: relative;
   margin-bottom: 150px;
 
+  @include media(max-width $md) {
+    margin-bottom: 60px;
+  }
+
   &,
   &-items {
     width: 100vw;
     height: 100vh;
+
+    @include media(max-width $md) {
+      height: 60vh;
+    }
   }
 
   &-items {
@@ -130,6 +141,10 @@ export default {
     bottom: 60px;
     width: 100%;
     z-index: 10;
+
+    @include media(max-width $md) {
+      display: none;
+    }
 
     .nav-item {
       opacity: 0.7;
@@ -167,6 +182,10 @@ export default {
     top: 0;
     left: 0;
 
+    @include media(max-width $md) {
+      height: 60vh;
+    }
+
     .bars {
       z-index: 1;
     }
@@ -201,6 +220,10 @@ export default {
       font-weight: 600;
       line-height: 1.17;
       color: #fff;
+
+      @include media(max-width $md) {
+        font-size: 32px;
+      }
     }
   }
 }

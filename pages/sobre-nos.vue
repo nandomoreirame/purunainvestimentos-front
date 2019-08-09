@@ -2,8 +2,8 @@
   <div>
     <p-page-header
       title="Conhecimento, Diligência e Independência"
-      :description="paragraphs"
-      :image="`${require('@/assets/images/iStock-934662002.jpg')}`"
+      :description="page.excerpt.rendered"
+      :page="page"
     />
 
     <p-section class="section-1">
@@ -110,9 +110,14 @@
 </template>
 
 <script>
-const paragraphs = `<p>A PURUNÃ Investimentos é uma gestora de fundos de investimentos, mais especificamente a gestão de Fundos de Investimentos em Direitos Creditórios (FIDC).</p>
-<p>A nossa proposta de negócio é ser um elo por meio da Securitização de Ativos entre empresas que necessitam de capital e investidores que buscam oportunidades de investimento.</p>
-<p>A nossa equipe é composta por um time de profissionais com experiência, grande conhecimento operacional e técnico do mercado financeiro e de capitais e livres de qualquer conflito de interesses.</p>`
+import { mapState } from 'vuex'
+import service from '@/service'
+
+const slug = 'sobre-nos'
+
+// const paragraphs = `<p>A PURUNÃ Investimentos é uma gestora de fundos de investimentos, mais especificamente a gestão de Fundos de Investimentos em Direitos Creditórios (FIDC).</p>
+// <p>A nossa proposta de negócio é ser um elo por meio da Securitização de Ativos entre empresas que necessitam de capital e investidores que buscam oportunidades de investimento.</p>
+// <p>A nossa equipe é composta por um time de profissionais com experiência, grande conhecimento operacional e técnico do mercado financeiro e de capitais e livres de qualquer conflito de interesses.</p>`
 
 export default {
   components: {
@@ -121,17 +126,20 @@ export default {
     PBoxCta: () => import('~/components/BoxCta.vue'),
     PColorsBars: () => import('~/components/Bars.vue')
   },
-  data () {
-    return {
-      paragraphs
+  computed: {
+    ...mapState({
+      page: ({ wordpress }) => wordpress.pages[slug]
+    })
+  },
+  async fetch ({ params, store, error }) {
+    const { pages } = store.state.wordpress
+
+    if (!Object.keys(pages[slug]).length) {
+      await service.page(slug)
+        .then(({ page }) =>
+          store.commit('wordpress/CHANGE_PAGE', { slug, page }))
+        .catch(err => console.error(err))
     }
-  // },
-  // asyncData () {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => { // eslint-disable-line
-  //       resolve()
-  //     }, 1000)
-  //   })
   }
 }
 </script>

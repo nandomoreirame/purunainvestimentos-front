@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .footer {
   .footer-top {
     padding: 0 0 60px 0;
@@ -47,9 +50,19 @@ export default {
   .footer-base {
     padding-bottom: 40px;
 
+    @include media(max-width $sm) {
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
     p {
       font-size: 16px;
       opacity: .75;
+
+      @include media(max-width $sm) {
+        font-size: 12px;
+      }
     }
   }
 }
