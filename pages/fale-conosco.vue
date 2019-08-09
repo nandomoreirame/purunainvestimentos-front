@@ -1,10 +1,9 @@
 <template>
   <div>
     <p-page-header
-      :title="`Fale <br /> conosco`"
+      :title="`Fale conosco`"
       :page="page"
     />
-
     <b-container>
       <b-row>
         <b-col col md="10" offset-md="1">
