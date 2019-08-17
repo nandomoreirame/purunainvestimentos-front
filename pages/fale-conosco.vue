@@ -7,7 +7,9 @@
     <b-container>
       <b-row>
         <b-col col md="10" offset-md="1">
-          <p-form />
+          <no-ssr>
+            <p-form />
+          </no-ssr>
         </b-col>
       </b-row>
     </b-container>

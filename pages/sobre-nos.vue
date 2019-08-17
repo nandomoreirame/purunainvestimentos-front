@@ -1,6 +1,7 @@
 <template>
   <div>
     <p-page-header
+      v-if="page.excerpt"
       title="Conhecimento, Diligência e Independência"
       :description="page.excerpt.rendered"
       :page="page"

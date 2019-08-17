@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { apiBaseUrl } from '../site.config'
+import { api } from '../site.config'
 
 const http = axios.create({
-  baseURL: apiBaseUrl,
+  baseURL: api.baseUrl,
   headers: {}
 })
 

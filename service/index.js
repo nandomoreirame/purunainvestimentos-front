@@ -1,38 +1,54 @@
+import { api } from '../site.config'
 import http from './http'
 
 class WordPressApi {
   constructor () {
     this.apiBase = `/wp-json`
+    this.endPoints = api.endPoints
+    this.defaultParams = {
+      _embed: true
+    }
   }
 
   page (slug, params = {}) {
-    params = { ...{ slug }, ...params, ...{ _embed: true } }
+    params = { ...{ slug }, ...this.defaultParams, ...params }
 
     return http
-      .get(`${this.apiBase}/wp/v2/pages`, { params })
+      .get(`${this.apiBase}${this.endPoints.pages}`, { params })
       .then(json => json.data.length ? json.data[0] : json.data)
       .then(page => ({ page }))
       .catch(error => ({ error }))
   }
 
   downloads (params = {}) {
-    params = { ...{}, ...params, ...{ _embed: true } }
+    params = { ...{}, ...this.defaultParams, ...params }
 
     return http
-      .get(`${this.apiBase}/wp/v2/downloads`, { params })
+      .get(`${this.apiBase}${this.endPoints.downloads}`, { params })
       .then(json => json.data)
       .then(downloads => ({ downloads }))
       .catch(error => ({ error }))
   }
 
   services (params = {}) {
-    params = { ...{}, ...params, ...{ _embed: true } }
+    params = { ...{}, ...this.defaultParams, ...params }
 
     return http
-      .get(`${this.apiBase}/wp/v2/services`, { params })
+      .get(`${this.apiBase}${this.endPoints.services}`, { params })
       .then(json => json.data)
       .then(services => ({ services }))
       .catch(error => ({ error }))
+  }
+
+  contact (params = {}) {
+    params = { ...{}, ...params }
+
+    return http
+      .post(`${this.apiBase}${this.endPoints.contact}`, params)
+      .then(json => { console.log(json); return json })
+      .then(json => json.data)
+      .then(contact => ({ contact }))
+      .catch(contact => ({ contact }))
   }
 }
 

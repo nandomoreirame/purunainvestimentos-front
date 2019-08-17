@@ -74,11 +74,12 @@ export default {
     '@/assets/sass/style.scss'
   ],
   plugins: [
-    // { src: '~/plugins/webfont.js', ssr: false },
-    // { src: '~/plugins/animations.js', ssr: false },
-    // { src: '~/plugins/slider.js', ssr: false },
-    { src: '~/plugins/locomotive-scroll.js', mode: 'client' },
-    { src: '~/plugins/lazysizes.js', ssr: false }
+    // { src: '~/plugins/webfont', ssr: false },
+    // { src: '~/plugins/animations', ssr: false },
+    // { src: '~/plugins/slider', ssr: false },
+    { src: '~/plugins/locomotive-scroll', mode: 'client' },
+    { src: '~/plugins/lazysizes', ssr: false },
+    { src: '~/plugins/vuelidate', ssr: false }
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage

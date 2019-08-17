@@ -15,9 +15,11 @@ export const mutations = {
   'CHANGE_PAGE' (state, { slug, page }) {
     state.pages[slug] = page
   },
+
   'CHANGE_DOWNLOADS' (state, payload) {
     state.downloads = payload
   },
+
   'CHANGE_SERVICES' (state, payload) {
     state.services = payload
   }

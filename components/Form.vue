@@ -1,5 +1,8 @@
 <template>
-  <b-form @submit="onSubmit">
+  <b-form
+    :class="isLoading ? `submitting` : ''"
+    @submit="sendContactForm"
+  >
     <b-row>
       <b-col col md="12">
         <b-form-group
@@ -8,10 +11,20 @@
         >
           <b-form-input
             id="input-name"
-            v-model="form.name"
+            v-model="formName"
             type="text"
+            :state="setState('name')"
             placeholder="Nome"
+            :readonly="isLoading"
             required
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.name.$dirty && !$v.form.name.required"
+            v-html="`O <strong>Nome</strong> é obrigatório!`"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.name.$dirty && !$v.form.name.minLength"
+            v-html="`O <strong>Nome</strong> precisa ter no mínimo ${$v.form.name.$params.minLength.min} letras!`"
           />
         </b-form-group>
       </b-col>
@@ -24,10 +37,20 @@
         >
           <b-form-input
             id="input-email"
-            v-model="form.email"
+            v-model="formEmail"
             type="email"
+            :state="setState('email')"
             placeholder="Email"
+            :readonly="isLoading"
             required
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.email.$dirty && !$v.form.email.required"
+            v-html="`O <strong>Email</strong> é obrigatório!`"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.email.$dirty && !$v.form.email.email"
+            v-html="`O <strong>Email</strong> é inválido!`"
           />
         </b-form-group>
       </b-col>
@@ -38,10 +61,24 @@
         >
           <b-form-input
             id="input-phone"
-            v-model="form.phone"
+            v-model.number="formPhone"
             type="tel"
+            :state="setState('phone')"
             placeholder="Telefone"
+            :readonly="isLoading"
             required
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.phone.$dirty && !$v.form.phone.required"
+            v-html="`O <strong>Telefone</strong> é obrigatório!`"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.phone.$dirty && !$v.form.phone.numeric"
+            v-html="`O <strong>Telefone</strong> é inválido, digite apenas números!`"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.phone.$dirty && !$v.form.phone.minLength"
+            v-html="`O <strong>Telefone</strong> precisa ter no mínimo ${$v.form.phone.$params.minLength.min} números!`"
           />
         </b-form-group>
       </b-col>
@@ -54,18 +91,47 @@
         >
           <b-form-textarea
             id="textarea"
-            v-model="form.message"
+            v-model="formMessage"
             placeholder="Mensagem"
+            :readonly="isLoading"
+            :state="setState('message')"
             rows="3"
             max-rows="6"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.message.$dirty && !$v.form.message.required"
+            v-html="`A <strong>Mensagem</strong> é obrigatório!`"
+          />
+          <b-form-invalid-feedback
+            v-if="$v.form.message.$dirty && !$v.form.message.minLength"
+            v-html="`A <strong>Mensagem</strong> precisa ter no mínimo ${$v.form.message.$params.minLength.min} letras!`"
           />
         </b-form-group>
       </b-col>
     </b-row>
+    <!-- <pre>{{ $v }}</pre> -->
+    <transition name="message">
+      <b-alert
+        v-if="contact.message"
+        show
+        dismissible
+        :variant="contact.type || 'danger'"
+        v-html="contact.message"
+      />
+    </transition>
     <b-row class="form-footer">
       <b-col col md="4">
-        <b-button block variant="primary">
-          <span>Enviar</span>
+        <b-button
+          type="submit"
+          block
+          variant="primary"
+          :disabled="isLoading || $v.$invalid"
+        >
+          <span v-if="isLoading">
+            <b-spinner small type="grow" />
+            <span>&nbsp;Enviando, aguarde...</span>
+          </span>
+          <span v-else>Enviar</span>
         </b-button>
       </b-col>
       <b-col col md="8">
@@ -76,29 +142,125 @@
 </template>
 
 <script>
+import { required, minLength, email, numeric } from 'vuelidate/lib/validators'
+import service from '@/service'
+
 export default {
   data () {
     return {
+      contact: {},
       form: {
         name: '',
         email: '',
         phone: '',
         message: ''
+      },
+      isLoading: false,
+      submitted: false,
+      error: false
+    }
+  },
+  validations: {
+    form: {
+      name: {
+        required,
+        minLength: minLength(4)
+      },
+      email: {
+        required,
+        email
+      },
+      phone: {
+        required,
+        numeric,
+        minLength: minLength(8)
+      },
+      message: {
+        required,
+        minLength: minLength(4)
       }
     }
   },
-  methods: {
-    onSubmit (e) {
-      e.preventDefault()
-      console.log(JSON.stringify(this.form))
+  computed: {
+    formName: {
+      get () {
+        return this.form.name
+      },
+      set (name) {
+        this.form.name = name
+        this.$v.form.name.$touch()
+      }
     },
-    onReset (e) {
-      e.preventDefault()
+    formEmail: {
+      get () {
+        return this.form.email
+      },
+      set (email) {
+        this.form.email = email
+        this.$v.form.email.$touch()
+      }
+    },
+    formPhone: {
+      get () {
+        return this.form.phone
+      },
+      set (phone) {
+        this.form.phone = phone
+        this.$v.form.phone.$touch()
+      }
+    },
+    formMessage: {
+      get () {
+        return this.form.message
+      },
+      set (message) {
+        this.form.message = message
+        this.$v.form.message.$touch()
+      }
+    }
+  },
+  // mounted () {
+  //   this.resetContactForm()
+  // },
+  methods: {
+    setState (to) {
+      if (!this.$v.form[to].$dirty) {
+        return null
+      }
 
+      if (to === 'email') {
+        return this.$v.form[to].required && this.$v.form[to].email && !this.$v.form[to].$invalid
+      }
+
+      return this.$v.form[to].required && this.$v.form[to].minLength && !this.$v.form[to].$invalid
+    },
+    sendContactForm (e) {
+      e.preventDefault()
+      this.isLoading = true
+      this.submitted = true
+      this.$v.$touch()
+
+      if (!this.$v.$invalid) {
+        service.contact(this.form)
+          .then(({ contact }) => {
+            this.contact = contact
+            this.isLoading = false
+            this.resetContactForm()
+          })
+          .catch(err => {
+            this.error = true
+            this.isLoading = false
+            this.contact = err
+            console.error('error', err)
+          })
+      }
+    },
+    resetContactForm () {
       this.form.name = ''
       this.form.email = ''
       this.form.phone = ''
       this.form.message = ''
+      this.$v.$reset()
     }
   }
 }
@@ -118,6 +280,22 @@ export default {
     outline: none;
     box-shadow: none;
     border-bottom-color: #007aff;
+  }
+
+  &.is-valid {
+    border-bottom-color: #28a745;
+  }
+
+  &.is-invalid {
+    color: #28a745;
+    border-bottom-color: #dc3545;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: #fff;
+    cursor: not-allowed;
+    opacity: .45;
   }
 }
 
@@ -151,6 +329,18 @@ export default {
     a {
       color: #fff;
     }
+  }
+}
+
+.message {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .5s;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
   }
 }
 </style>
