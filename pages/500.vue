@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>404</h1>
-    <p>Página não encontrada.</p>
+    <h1>500</h1>
+    <p>Erro interno no servidor.</p>
     <nuxt-link to="/">Pagina inicial</nuxt-link>
   </div>
 </template>

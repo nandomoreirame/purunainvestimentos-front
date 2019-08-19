@@ -64,11 +64,11 @@ export default {
     display: 'standalone',
     description
   },
-  loading: {
-    color: theme.color,
-    height: '4px',
-    continuous: true
-  },
+  // loading: {
+  //   color: theme.color,
+  //   height: '4px',
+  //   continuous: true
+  // },
   // loading: '~/components/Loading.vue',
   css: [
     '@/assets/sass/style.scss'
@@ -85,7 +85,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/google-analytics',
+    // '@nuxtjs/google-analytics',
     '@nuxtjs/sitemap',
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     'bootstrap-vue/nuxt'
@@ -100,50 +100,43 @@ export default {
   router: {
     linkActiveClass: 'active'
   },
-  'google-analytics': {
-    id: isProduction ? 'UA-0000000-1' : 'UA-0000000-1',
-    debug: {
-      enabled: !isProduction,
-      track: !isProduction,
-      sendHitTask: isProduction
-    }
-  },
+  // 'google-analytics': {
+  //   id: isProduction ? 'UA-0000000-1' : 'UA-0000000-1',
+  //   debug: {
+  //     enabled: false,
+  //     track: false,
+  //     sendHitTask: isProduction
+  //   }
+  // },
   build: {
     vendor: [
     ],
-    optimization: {
-      runtimeChunk: true,
-      splitChunks: {
-        chunks: 'async',
-        minSize: 30000,
-        maxSize: 0,
-        cacheGroups: {
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-            enforce: true
-          },
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true
-          },
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    },
-    hooks: {
-      listen (server, { host, port }) {
-        if (process.env.NODE_ENV !== 'production') {
-          open(`http://${host}:${port}`)
-        }
-      }
-    },
+    // optimization: {
+    //   runtimeChunk: true,
+    //   splitChunks: {
+    //     chunks: 'async',
+    //     minSize: 30000,
+    //     maxSize: 0,
+    //     cacheGroups: {
+    //       vendors: {
+    //         test: /[\\/]node_modules[\\/]/,
+    //         priority: -10,
+    //         enforce: true
+    //       },
+    //       default: {
+    //         minChunks: 2,
+    //         priority: -20,
+    //         reuseExistingChunk: true
+    //       },
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // },
     http: {
       retry: 3
     },
@@ -169,6 +162,7 @@ export default {
     extend (config, { isDev, isClient, loaders: { vue } }) {
       // Run ESLint on save
       if (isDev && isClient) {
+        config.devtool = 'eval-source-map'
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

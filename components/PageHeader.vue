@@ -1,21 +1,25 @@
 <template>
   <div class="page-header">
-    <p-meta-tags :title="title" :description="description" :url="url" />
+    <p-meta-tags
+      :title="pageTitle(page, title)"
+      :description="pageDescription(page, description)"
+      :url="url"
+    />
     <b-container>
       <b-row align-v="center">
         <b-col col md="5" sm="12" offset-md="1">
           <h1 v-if="title" class="title" v-html="title" />
-          <div class="description" v-html="description" />
+          <div v-if="Object.keys(page).length && page.content" class="description" v-html="page.content.rendered" />
           <p-colors-bars
             :items="[
-              { top: '0px', left: '600px', width: '320px', height: '15px', borderRadius: '10px' },
-              { top: '110px', left: '320px', width: '500px', height: '25px', borderRadius: '20px' },
-              { top: '-120px', left: '260px', width: '500px', height: '50px', borderRadius: '30px' }
+              { top: '-240px', left: '570px', width: '320px', height: '15px', borderRadius: '10px' },
+              { top: '30px', left: '510px', width: '500px', height: '25px', borderRadius: '20px' },
+              { top: '-220px', left: '420px', width: '500px', height: '40px', borderRadius: '30px' }
             ]"
           />
         </b-col>
         <b-col col md="6" sm="12" class="column-image right full-right">
-          <span v-if="image || Object.keys(page).length > 0" :style="{ backgroundImage: `url(${featuredMedia(page, image)})` }" />
+          <span v-if="image || Object.keys(page).length > 0" :style="{ backgroundImage: `url(${pageImage(page, image)})` }" />
         </b-col>
       </b-row>
     </b-container>
@@ -23,6 +27,8 @@
 </template>
 
 <script>
+const striptags = require('striptags')
+
 export default {
   components: {
     PColorsBars: () => import('~/components/Bars.vue'),
@@ -55,20 +61,44 @@ export default {
       const { TimelineMax, Back } = require('gsap/all')
       const pageTitle = document.querySelector('.page-header .title')
       const pageDescription = document.querySelector('.page-header .description')
+      const bar01 = document.querySelectorAll('.page-header .bars .bar01')
+      const bar02 = document.querySelectorAll('.page-header .bars .bar02')
+      const bar03 = document.querySelectorAll('.page-header .bars .bar03')
       const timeline = new TimelineMax()
 
       timeline
         .to(pageTitle, 0.6, { y: -50, opacity: 1, ease: Back.easeOut }, 0.5)
         .to(pageDescription, 0.6, { y: -50, opacity: 1, ease: Back.easeOut }, 0.75)
+        .to(bar01, 0.4, { y: -40, opacity: 0.9, ease: Back.easeOut }, 0.4)
+        .to(bar02, 0.7, { y: -40, opacity: 0.9, ease: Back.easeOut }, 0.6)
+        .to(bar03, 1, { y: -40, opacity: 0.9, ease: Back.easeOut }, 0.8)
     })()
   },
   methods: {
-    featuredMedia: (page, image) => {
-      if (Object.keys(page).length && page._embedded) {
+    pageTitle: (page, title) => {
+      if (Object.keys(page).length && page.title) {
+        return striptags(page.title.rendered)
+      }
+
+      return striptags(title) || ''
+    },
+    pageDescription: (page, description) => {
+      if (Object.keys(page).length && page.excerpt) {
+        return striptags(page.excerpt.rendered)
+      }
+
+      return striptags(description) || ''
+    },
+    pageImage: (page, image) => {
+      if (Object.keys(page).length && page._embedded && page._embedded['wp:featuredmedia']) {
         return page._embedded['wp:featuredmedia']['0'].source_url
       }
 
-      return image
+      if (image) {
+        return image
+      }
+
+      return require(`@/assets/images/error.png`)
     }
   }
 }
@@ -83,6 +113,14 @@ export default {
   margin-bottom: 120px;
   background-color: #f8f8f8;
   width: 100vw;
+
+  .bars {
+    z-index: 10;
+
+    .bar {
+      opacity: 0;
+    }
+  }
 
   @include media(max-width $md) {
     padding-top: 180px;

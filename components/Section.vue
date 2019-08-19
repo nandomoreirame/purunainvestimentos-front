@@ -1,5 +1,5 @@
 <template>
-  <section data-scroll="true" class="section">
+  <section class="section">
     <b-container>
       <slot />
     </b-container>

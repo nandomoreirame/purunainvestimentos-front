@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: 'DefaultLayout',
   components: {
     PHeader: () => import('~/components/Header.vue'),
     PBoxInfo: () => import('~/components/BoxInfo.vue'),

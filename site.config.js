@@ -17,6 +17,7 @@ export const api = {
   baseUrl: apiBaseUrl,
   endPoints: {
     pages: '/wp/v2/pages',
+    banners: '/wp/v2/banners',
     services: '/wp/v2/services',
     downloads: '/wp/v2/downloads',
     contact: '/contact/v1/send'

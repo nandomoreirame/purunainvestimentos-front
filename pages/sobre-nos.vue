@@ -2,51 +2,38 @@
   <div>
     <p-page-header
       v-if="page.excerpt"
-      title="Conhecimento, Diligência e Independência"
+      :title="page.title.rendered"
       :description="page.excerpt.rendered"
       :page="page"
     />
 
-    <p-section class="section-1">
+    <p-section v-if="page.about_como_construimos" class="section-1">
       <b-row>
         <b-col col md="3" offset-md="1">
           <p-colors-bars />
         </b-col>
         <b-col col md="7">
-          <h2>Como construímos nossos fundos de investimentos.</h2>
+          <h2 v-text="page.about_como_construimos" />
         </b-col>
       </b-row>
       <b-row>
-        <b-col col md="4">
-          <h3>Análise dos Fundamentos</h3>
-          <p>Para a estruturação do FIDC há o contato inicial com o cliente e o alinhamento dos interesses, coleta de informações e pré-análise do crédito, definição dos papéis e responsabilidades, análise do negócio como um todo, padronização das informações, revisão das projeções, análise da estrutura da operação e garantias e definição da estratégia, limites, covenants, triggers e uma classificação de risco para o cliente e a operação.</p>
-        </b-col>
-        <b-col col md="4">
-          <h3>Estruturação do FIDC</h3>
-          <p>Nessa etapa verifica qual é o melhor prestador de serviço para executar as rotinas do FIDC, por exemplo, se o possível Custodiante do fundo possui capacidade tecnológica para o processamento de operações e controles internos adequados para a conciliação e guarde ativos.</p>
-          <p>Quanto ao Risco e Retorno é comparado com a indústria e pondera classificação de risco por meio do Comitê de Crédito, se realiza a Due Diligence da operação e por fim a formalização de crédito e liberação dos recursos.</p>
-        </b-col>
-        <b-col col md="4">
-          <h3>Revisão e Monitoramento</h3>
-          <p>O controle e acompanhamento dos FIDCs são feitos periodicamente de acordo com o risco de cada operação. São premissas básicas: a atualização das informações e reavaliações de classificação de risco, acompanhamento dos projetos de capital, triggers, covenants e garantias e por último a administração e gestão do risco.</p>
-        </b-col>
+        <b-col v-if="page.about_analise_fundamentos" col md="4" v-html="page.about_analise_fundamentos" />
+        <b-col v-if="page.about_estruturacao_fidc" col md="4" v-html="page.about_estruturacao_fidc" />
+        <b-col v-if="page.about_revisao_monitoramento" col md="4" v-html="page.about_revisao_monitoramento" />
       </b-row>
     </p-section>
 
     <p-section class="section-2">
       <b-row>
-        <b-col col md="7" class="column-image left" offset-md="1" data-scroll="true">
+        <b-col col md="7" class="column-image left" offset-md="1">
           <span
             :data-bg="`${require('@/assets/images/iStock-931230100.jpg')}`"
             class="lazyload"
-            data-scroll="true"
-            data-scroll-speed="-0.2"
-            data-scroll-direction="horizontal"
           />
         </b-col>
         <b-col col md="4">
           <h2>Valores da Organização</h2>
-          <ul data-scroll="true">
+          <ul>
             <li>Integridade</li>
             <li>Responsabilidade</li>
             <li>Simplicidade</li>
@@ -56,7 +43,7 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col col md="2" offset-md="10" data-scroll="true">
+        <b-col col md="2" offset-md="10">
           <p-colors-bars />
         </b-col>
       </b-row>
@@ -72,14 +59,11 @@
           <span
             :data-bg="`${require('@/assets/images/iStock-952625346.jpg')}`"
             class="lazyload"
-            data-scroll="true"
-            data-scroll-speed="-0.3"
-            data-scroll-direction="horizontal"
           />
         </b-col>
       </b-row>
       <b-row>
-        <b-col col md="2" offset-md="1" data-scroll="true">
+        <b-col col md="2" offset-md="1">
           <p-colors-bars />
         </b-col>
       </b-row>
@@ -98,9 +82,6 @@
           <span
             :data-bg="`${require('@/assets/images/iStock-1043539212.jpg')}`"
             class="lazyload"
-            data-scroll="true"
-            data-scroll-speed="0.5"
-            data-scroll-direction="horizontal"
           />
         </b-col>
       </b-row>
@@ -170,8 +151,8 @@ export default {
       margin-bottom: 40px;
 
       li {
-        opacity: 0;
-        transform: translateY(60px);
+        // opacity: 0;
+        // transform: translateY(60px);
         transition: opacity .6s cubic-bezier(.215,.61,.355,1), transform .6s cubic-bezier(.215,.61,.355,1);
       }
 

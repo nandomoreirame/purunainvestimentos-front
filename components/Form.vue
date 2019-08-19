@@ -62,6 +62,7 @@
           <b-form-input
             id="input-phone"
             v-model.number="formPhone"
+            v-mask="['(##) ####-####', '(##) #####-####']"
             type="tel"
             :state="setState('phone')"
             placeholder="Telefone"
@@ -73,12 +74,8 @@
             v-html="`O <strong>Telefone</strong> é obrigatório!`"
           />
           <b-form-invalid-feedback
-            v-if="$v.form.phone.$dirty && !$v.form.phone.numeric"
-            v-html="`O <strong>Telefone</strong> é inválido, digite apenas números!`"
-          />
-          <b-form-invalid-feedback
             v-if="$v.form.phone.$dirty && !$v.form.phone.minLength"
-            v-html="`O <strong>Telefone</strong> precisa ter no mínimo ${$v.form.phone.$params.minLength.min} números!`"
+            v-html="`O <strong>Telefone</strong> precisa ter no mínimo ${$v.form.phone.$params.minLength.min} digitos!`"
           />
         </b-form-group>
       </b-col>
@@ -142,10 +139,14 @@
 </template>
 
 <script>
-import { required, minLength, email, numeric } from 'vuelidate/lib/validators'
+import { mask } from 'vue-the-mask'
+import { required, minLength, email } from 'vuelidate/lib/validators'
 import service from '@/service'
 
 export default {
+  directives: {
+    mask
+  },
   data () {
     return {
       contact: {},
@@ -164,7 +165,7 @@ export default {
     form: {
       name: {
         required,
-        minLength: minLength(4)
+        minLength: minLength(2)
       },
       email: {
         required,
@@ -172,8 +173,7 @@ export default {
       },
       phone: {
         required,
-        numeric,
-        minLength: minLength(8)
+        minLength: minLength(14)
       },
       message: {
         required,
@@ -297,6 +297,13 @@ export default {
     cursor: not-allowed;
     opacity: .45;
   }
+}
+
+.alert.alert-success,
+.alert.alert-danger {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
 }
 
 .form-footer {

@@ -6,14 +6,16 @@
 
 <script>
 export default {
-  data: () => ({
-    loading: false
-  }),
+  data () {
+    return { loading: false }
+  },
   methods: {
     start () {
+      console.warn('[loading start]')
       this.loading = true
     },
     finish () {
+      console.warn('[loading finish]')
       this.loading = false
     }
   }

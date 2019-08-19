@@ -169,8 +169,8 @@ export default {
         background-color: transparent;
         transition: opacity .3s ease-in-out, transform .3s ease-in-out;
         left: 0;
-        transform: translate3d(0, 100%, 0);
-        opacity: 0;
+        // transform: translate3d(0, 100%, 0);
+        // opacity: 0;
       }
 
       &:hover,

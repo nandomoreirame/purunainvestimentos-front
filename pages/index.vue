@@ -26,14 +26,10 @@
           offset-md="1"
           sm="12"
           class="column-image right full-right"
-          data-scroll="true"
         >
           <span
             :data-bg="`${require('@/assets/images/iStock-922512798.jpg')}`"
             class="lazyload"
-            data-scroll="true"
-            data-scroll-speed="0.3"
-            data-scroll-direction="horizontal"
           />
         </b-col>
       </b-row>
@@ -71,19 +67,16 @@
           col
           md="4"
           class="column-image right"
-          data-scroll="true"
         >
           <span
             :data-bg="`${require('@/assets/images/iStock-921987904.jpg')}`"
             class="lazyload"
-            data-scroll="true"
-            data-scroll-speed="0.65"
           />
         </b-col>
       </b-row>
     </p-section>
 
-    <p-section class="section-4" data-scroll="true" data-scroll-speed="0.5">
+    <p-section class="section-4">
       <b-row>
         <b-col col md="10" offset-md="1">
           <h2>Faça sua empresa crescer, conheça as formas e usos dos FIDCs</h2>
@@ -152,6 +145,8 @@
 </template>
 
 <script>
+import service from '@/service'
+
 export default {
   layout: 'home',
   components: {
@@ -159,6 +154,16 @@ export default {
     PSection: () => import('~/components/Section.vue'),
     PColorsBars: () => import('~/components/Bars.vue'),
     PMetaTags: () => import('~/components/MetaTags.vue')
+  },
+  async fetch ({ store, error }) {
+    const { banners } = store.state.wordpress
+
+    if (!banners.length) {
+      await service.banners()
+        .then(({ banners }) =>
+          store.commit('wordpress/CHANGE_BANNERS', banners))
+        .catch(err => console.error(err))
+    }
   }
 }
 </script>

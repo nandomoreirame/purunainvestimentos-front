@@ -9,7 +9,13 @@
       <b-row>
         <b-col col md="4" offset-md="1">
           <nav class="service-nav">
-            <a v-for="(service, i) in services" :key="service.id" href="#" :class="`service-nav-item ${ i === 0 ? 'active' : ''}`" @click="toggleService(i)">
+            <a
+              v-for="(service, i) in services"
+              :key="service.id"
+              :href="`#service${service.id}`"
+              :class="`service-nav-item ${ i === 0 ? 'active' : ''}`"
+              @click.prevent="toggleService(i)"
+            >
               <svg width="19" height="12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                   <path id="a" d="M17.653 5H4.483L7.36 2.116A.998.998 0 0 0 5.95.705L.652 6l5.295 5.295A.997.997 0 0 0 7.36 9.884L4.483 7h13.17a1 1 0 0 0 0-2z" />
@@ -26,16 +32,8 @@
             :key="i"
             :data-bg="`${service._embedded['wp:featuredmedia']['0'].source_url}`"
             class="service-image lazyload"
-            data-scroll="true"
-            data-scroll-speed="-0.3"
-            data-scroll-direction="horizontal"
           />
-          <div
-            class="black-block"
-            data-scroll="true"
-            data-scroll-speed="0.2"
-            data-scroll-direction="horizontal"
-          >
+          <div class="black-block">
             <b-row>
               <b-col col md="4">
                 <h3>Detalhes do serviço</h3>
@@ -43,8 +41,9 @@
               <b-col col md="7">
                 <div class="service-text">
                   <div
-                    v-for="(service, i) in services"
-                    :key="i"
+                    v-for="service in services"
+                    :id="`service${service.id}`"
+                    :key="service.id"
                     v-html="service.content.rendered"
                   />
                 </div>
@@ -83,7 +82,7 @@ export default {
     const slug = 'servicos'
     const { pages, services } = store.state.wordpress
 
-    if (!Object.keys(pages[slug]).length) {
+    if (!Object.keys(pages[slug]).length && !services.length) {
       await service.page(slug)
         .then(({ page }) => {
           if (page.length <= 0) {
@@ -91,14 +90,12 @@ export default {
           }
 
           store.commit('wordpress/CHANGE_PAGE', { slug, page })
-        })
-        .catch(err => console.error(err))
-    }
 
-    if (!services.length) {
-      await service.services()
-        .then(({ services }) =>
-          store.commit('wordpress/CHANGE_SERVICES', services))
+          return service.services()
+            .then(({ services }) =>
+              store.commit('wordpress/CHANGE_SERVICES', services))
+            .catch(err => console.error(err))
+        })
         .catch(err => console.error(err))
     }
   },

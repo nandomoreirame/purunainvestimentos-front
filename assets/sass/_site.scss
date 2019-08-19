@@ -1,22 +1,30 @@
+html,
+body,
+#__nuxt {
+  width: 100vw;
+  overflow-x: hide;
+  overflow-y: scroll;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 
-  &:not(.has-scroll-init) {
-    cursor: wait;
-    overflow: hidden
-  }
+  // &:not(.has-scroll-init) {
+  //   cursor: wait;
+  //   overflow: hidden
+  // }
 
-  &.has-scroll-smooth {
-    overflow: hidden
-  }
+  // &.has-scroll-smooth {
+  //   overflow: hidden
+  // }
 
-  &.has-scroll-dragging {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-  }
+  // &.has-scroll-dragging {
+  //   -webkit-user-select: none;
+  //   -moz-user-select: none;
+  //   -ms-user-select: none;
+  //   user-select: none
+  // }
 }
 
 body {
@@ -28,12 +36,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  overflow-y: scroll;
 }
 
-.has-scroll-smooth body {
-  overflow: hidden
-}
+// .has-scroll-smooth body {
+//   overflow: hidden
+// }
 
 ::-moz-selection {
   background-color: #007aff;

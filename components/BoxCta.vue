@@ -1,14 +1,12 @@
 <template>
-  <p-section class="box-cta" data-scroll="true">
+  <p-section class="box-cta">
     <b-row>
       <b-col col md="6" offset-md="4">
-        <h2 data-scroll="true" data-scroll-speed="1">Quer Investir ou estruturar um Fundo de Investimento?</h2>
+        <h2>Quer Investir ou estruturar um Fundo de Investimento?</h2>
         <nuxt-link
           to="/fale-conosco"
           class="btn btn-primary"
           role="button"
-          data-scroll="true"
-          data-scroll-speed="1.3"
         >
           <span>Fale conosco</span>
           <svg width="8" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

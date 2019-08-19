@@ -1,4 +1,5 @@
 export const state = () => ({
+  banners: [],
   downloads: [],
   services: [],
   pages: {
@@ -14,6 +15,10 @@ export const state = () => ({
 export const mutations = {
   'CHANGE_PAGE' (state, { slug, page }) {
     state.pages[slug] = page
+  },
+
+  'CHANGE_BANNERS' (state, payload) {
+    state.banners = payload
   },
 
   'CHANGE_DOWNLOADS' (state, payload) {

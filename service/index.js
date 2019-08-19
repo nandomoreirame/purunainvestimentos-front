@@ -20,6 +20,16 @@ class WordPressApi {
       .catch(error => ({ error }))
   }
 
+  banners (params = {}) {
+    params = { ...{}, ...this.defaultParams, ...params }
+
+    return http
+      .get(`${this.apiBase}${this.endPoints.banners}`, { params })
+      .then(json => json.data)
+      .then(banners => ({ banners }))
+      .catch(error => ({ error }))
+  }
+
   downloads (params = {}) {
     params = { ...{}, ...this.defaultParams, ...params }
 
