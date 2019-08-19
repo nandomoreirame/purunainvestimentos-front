@@ -1,7 +1,7 @@
 <template>
   <p-section class="box-info">
     <b-row>
-      <b-col col md="4" offset-md="1">
+      <b-col col md="4">
         <h3>Acesse os sites</h3>
         <ul>
           <li>
@@ -24,7 +24,7 @@
           <p-icon-linkedin />
         </div>
       </b-col>
-      <b-col col md="7" class="col-right">
+      <b-col col md="8" class="col-right">
         <b-row>
           <b-col col md="5" offset-md="1">
             <h3>Escritório</h3>
