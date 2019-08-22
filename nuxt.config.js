@@ -45,6 +45,7 @@ export default {
       { name: 'geo.placename', content: 'Curitiba/Paraná' }
     ],
     link: [
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,600,600i,800,800i&display=swap' },
       { rel: 'index', href: `${siteBaseUrl}/` },
