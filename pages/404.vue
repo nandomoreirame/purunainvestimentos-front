@@ -1,3 +1,5 @@
+<style lang="scss" src="./errors.scss" scoped></style>
+
 <template>
   <div>
     <h1>404</h1>

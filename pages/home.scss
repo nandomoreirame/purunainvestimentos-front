@@ -1,0 +1,131 @@
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
+.section {
+  &.section-2 {
+    h2 {
+      font-size: 60px;
+      line-height: 1.17;
+      letter-spacing: -2px;
+      margin-bottom: 60px;
+
+      @include media(max-width $sm) {
+       font-size: 30px;
+      }
+    }
+
+    @include media(max-width $md) {
+      .col-md-3 {
+        height: 280px;
+      }
+    }
+
+    .bars {
+      position: relative;
+      top: 100px;
+
+      @include media(max-width $md) {
+        top: 0;
+      }
+    }
+  }
+
+  &.section-3 {
+    h2 {
+      margin-bottom: 100px;
+    }
+  }
+
+  &.section-4 {
+    background-color: #007aff;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    h2,
+    h3,
+    p {
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 60px;
+      line-height: 1.17;
+      margin-bottom: 60px;
+
+      @include media(max-width $md) {
+        font-size: 42px;
+      }
+
+      @include media(max-width $sm) {
+        font-size: 38px;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+
+  &.section-5 {
+    h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -2px;
+      color: #000;
+      margin-bottom: 30px;
+
+      @include media(max-width $sm) {
+        font-size: 40px;
+      }
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #000;
+      line-height: 1.5;
+      letter-spacing: -0.8px;
+      letter-spacing: initial;
+      text-transform: initial;
+      margin-bottom: 60px;
+
+      @include media(max-width $sm) {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 40px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @include media(max-width $sm) {
+        padding-left: 10px;
+      }
+
+      li {
+        font-size: 16px;
+        line-height: 2;
+        color: #4a4a4a;
+        position: relative;
+        padding-left: 15px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 14px;
+          left: 0;
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          background-color: #007aff;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

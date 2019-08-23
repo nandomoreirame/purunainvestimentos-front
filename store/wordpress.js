@@ -4,6 +4,7 @@ export const state = () => ({
   downloads: [],
   services: [],
   pages: {
+    'home': {},
     'servicos': {},
     'sobre-nos': {},
     'para-o-investidor': {},
