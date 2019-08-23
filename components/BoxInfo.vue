@@ -2,22 +2,7 @@
   <p-section class="box-info">
     <b-row>
       <b-col col md="4">
-        <h3>Acesse os sites</h3>
-        <ul>
-          <li>
-            <a href="http://cvm.gov.br" target="_blank">
-              <p-icon-external-link />
-              <span>cvm.gov.br</span>
-            </a>
-          </li>
-          <li>
-            <a href="http://comoinvestir.anbima.com.br" target="_blank">
-              <p-icon-external-link />
-              <span>comoinvestir.anbima.com.br</span>
-            </a>
-          </li>
-        </ul>
-
+        <div v-if="options.contact_links" v-html="options.contact_links" />
         <h3>Siga-nos</h3>
         <div class="social">
           <p-icon-instagram />
@@ -27,14 +12,17 @@
       <b-col col md="8" class="col-right">
         <b-row>
           <b-col col md="5" offset-md="1">
-            <h3>Escritório</h3>
-            <p>R. Francisco Rocha, 198 <br />Batel, Curitiba - PR, <br />80420-130</p>
+            <div v-if="options.contact_address" v-html="options.contact_address" />
             <h3>Contato</h3>
-            <p><a href="mailto:contato@purunainvestimentos.com.br">contato@purunainvestimentos.com.br</a><br /><a href="tel:+5541998007611">+55 41 9 9800 7611</a></p>
+            <p v-if="options.contact_email || options.contact_phone">
+              <a v-if="options.contact_email" :href="`mailto:${options.contact_email}`" v-text="options.contact_email" />
+              <br />
+              <a v-if="options.contact_phone" :href="`tel:${options.contact_phone.replace(/[^0-9]/g, '')}`" v-text="options.contact_phone" />
+            </p>
           </b-col>
-          <b-col col md="6">
+          <b-col v-if="options.contact_email_work" col md="6">
             <h3>Trabalhe conosco</h3>
-            <p><a href="mailto:carreiras@purunainvestimentos.com.br">carreiras@purunainvestimentos.com.br</a></p>
+            <p><a :href="`mailto:${options.contact_email_work}`" v-text="options.contact_email_work" /></p>
           </b-col>
         </b-row>
       </b-col>
@@ -43,12 +31,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   components: {
     PSection: () => import('~/components/Section.vue'),
-    PIconExternalLink: () => import('~/components/svg/ExternalLink.vue'),
     PIconInstagram: () => import('~/components/svg/Instagram.vue'),
     PIconLinkedin: () => import('~/components/svg/Linkedin.vue')
+  },
+  computed: {
+    ...mapState({
+      options: ({ wordpress }) => wordpress.options
+    })
   }
 }
 </script>
@@ -107,6 +101,10 @@ export default {
 
   .col-right {
     position: relative;
+
+    .col-md-5 > div {
+      margin-bottom: 30px;
+    }
 
     &::after {
       content: '';

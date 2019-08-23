@@ -16,6 +16,7 @@ export const theme = {
 export const api = {
   baseUrl: apiBaseUrl,
   endPoints: {
+    options: '/wp/v2/options',
     pages: '/wp/v2/pages',
     banners: '/wp/v2/banners',
     services: '/wp/v2/services',

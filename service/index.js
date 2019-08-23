@@ -10,6 +10,15 @@ class WordPressApi {
     }
   }
 
+  options (slug, params = {}) {
+    params = { ...{ slug }, ...this.defaultParams, ...params }
+    return http
+      .get(`${this.apiBase}${this.endPoints.options}`, { params })
+      .then(json => json.data)
+      .then(options => ({ options }))
+      .catch(error => ({ error }))
+  }
+
   page (slug, params = {}) {
     params = { ...{ slug }, ...this.defaultParams, ...params }
 

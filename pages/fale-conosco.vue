@@ -23,7 +23,7 @@ import service from '@/service'
 export default {
   components: {
     PPageHeader: () => import('~/components/PageHeader.vue'),
-    PForm: () => import('~/components/Form.vue')
+    PForm: () => import('~/components/Form')
   },
   computed: {
     ...mapState({

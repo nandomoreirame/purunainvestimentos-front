@@ -9,15 +9,22 @@
           <p>©2019 Purunã Investimentos . Todos os direitos reservados.</p>
         </b-col>
       </b-row>
-      <b-row class="footer-base">
-        <p>A PURUNÃ investimentos Gestora de Recursos LTDA não comercializa e nem distribui cotas de fundos de investimentos em qualquer outro ativo financeiro. Os fundos de investimento não contam com garantia do administrador do fundo, do gestor de carteira, de qualquer mecanismos de seguro, ou, ainda do Fundo Garantidor de Crédito - FGC. A rentabilidade obtida não representa garantia de rentabilidade futura. É recomendada a leitura cuidadosa do prospecto e regulamento do fundo de investimento pelo investidor ao aplicar seus recursos.</p>
+      <b-row v-if="options.general_footer_text" class="footer-base">
+        <p v-html="options.general_footer_text" />
       </b-row>
     </b-container>
   </footer>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+    ...mapState({
+      options: ({ wordpress }) => wordpress.options
+    })
+  }
 }
 </script>
 

@@ -3,6 +3,7 @@
     <p-page-header
       v-if="page.title"
       :title="page.title.rendered"
+      :showdescription="false"
       :page="page"
     />
     <b-container>

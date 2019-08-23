@@ -9,7 +9,8 @@
       <b-row align-v="center">
         <b-col col md="5" sm="12" offset-md="1">
           <h1 v-if="title" class="title" v-html="title" />
-          <div v-if="Object.keys(page).length && page.content" class="description" v-html="page.content.rendered" />
+          <div v-if="showdescription && Object.keys(page).length && page.excerpt" class="description" v-html="page.excerpt.rendered" />
+          <div v-else class="description" />
           <p-colors-bars
             :items="[
               { top: '-240px', left: '570px', width: '320px', height: '15px', borderRadius: '10px' },
@@ -42,6 +43,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    showdescription: {
+      type: Boolean,
+      default: true
     },
     description: {
       type: String,

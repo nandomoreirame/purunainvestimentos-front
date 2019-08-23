@@ -1,4 +1,5 @@
 export const state = () => ({
+  options: {},
   banners: [],
   downloads: [],
   services: [],
@@ -13,6 +14,10 @@ export const state = () => ({
 })
 
 export const mutations = {
+  'CHANGE_OPTIONS_THEME' (state, payload) {
+    state.options = payload
+  },
+
   'CHANGE_PAGE' (state, { slug, page }) {
     state.pages[slug] = page
   },
