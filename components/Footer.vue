@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <p-box-info />
     <b-container>
       <b-row class="footer-top">
         <b-col col md="3" offset-md="4">
@@ -20,6 +21,9 @@
 import { mapState } from 'vuex'
 
 export default {
+  components: {
+    PBoxInfo: () => import('~/components/BoxInfo.vue')
+  },
   computed: {
     ...mapState({
       options: ({ wordpress }) => wordpress.options

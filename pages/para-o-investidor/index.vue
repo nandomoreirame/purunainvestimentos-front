@@ -3,6 +3,8 @@
 
 <template>
   <div>
+    <p-header />
+
     <p-page-header
       title="Fundos de Investimentos para o setor produtivo do Brasil"
       :page="page"
@@ -37,5 +39,7 @@
     </p-section>
 
     <p-box-cta />
+
+    <p-footer />
   </div>
 </template>

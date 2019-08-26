@@ -1,21 +1,24 @@
 <template>
-  <div>
-    <p-header />
-    <main id="main-page">
-      <nuxt />
-      <p-box-info />
-    </main>
-    <p-footer />
-  </div>
+  <main id="main-page" :class="`page--${page}`">
+    <nuxt />
+  </main>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'DefaultLayout',
-  components: {
-    PHeader: () => import('~/components/Header.vue'),
-    PBoxInfo: () => import('~/components/BoxInfo.vue'),
-    PFooter: () => import('~/components/Footer.vue')
+  computed: {
+    ...mapState({
+      page: ({ page }) => page
+    })
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
+    })
   }
 }
 </script>

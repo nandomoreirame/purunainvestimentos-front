@@ -2,12 +2,15 @@
 
 <template>
   <div v-if="Object.keys(page).length">
+    <p-header />
+
     <p-page-header
       v-if="page.title"
       :title="page.title.rendered"
       :showdescription="false"
       :page="page"
     />
+
     <b-container>
       <b-row>
         <b-col col md="9" offset-md="2" class="page-politica-e-privacidade">
@@ -16,5 +19,7 @@
         </b-col>
       </b-row>
     </b-container>
+
+    <p-footer />
   </div>
 </template>

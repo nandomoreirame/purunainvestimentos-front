@@ -3,6 +3,8 @@
 
 <template>
   <div>
+    <p-header />
+
     <p-page-header
       v-if="page.excerpt"
       :title="page.title.rendered"
@@ -91,5 +93,7 @@
     </p-section>
 
     <p-box-cta />
+
+    <p-footer />
   </div>
 </template>

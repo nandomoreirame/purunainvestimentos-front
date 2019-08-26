@@ -1,12 +1,12 @@
 import service from '@/service'
 
-export default function ({ store, redirect }) {
-  const { options } = store.state.wordpress
+export default function ({ store }) {
+  const { commit } = store
+  const { wordpress } = store.state
 
-  if (!Object.keys(options).length) {
+  if (!Object.keys(wordpress.options).length) {
     service.options()
-      .then(({ options }) =>
-        store.commit('wordpress/CHANGE_OPTIONS_THEME', options))
+      .then(({ options }) => commit('wordpress/CHANGE_OPTIONS_THEME', options))
       .catch(err => console.error(err))
   }
 }

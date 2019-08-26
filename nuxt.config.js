@@ -1,5 +1,4 @@
 import {
-  isProduction,
   title,
   description,
   theme,
@@ -70,7 +69,7 @@ export default {
   //   height: '4px',
   //   continuous: true
   // },
-  // loading: '~/components/Loading.vue',
+  loading: '~/components/Loading.vue',
   css: [
     '@/assets/sass/style.scss'
   ],
@@ -99,7 +98,7 @@ export default {
     // See https://github.com/nuxt-community/axios-module#options
   },
   router: {
-    middleware: ['api'],
+    middleware: ['api', 'page'],
     linkActiveClass: 'active'
   },
   // 'google-analytics': {

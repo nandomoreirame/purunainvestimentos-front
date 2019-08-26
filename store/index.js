@@ -1,10 +1,15 @@
 export const state = () => ({
-  pageLoading: false
+  pageLoading: false,
+  page: 'index'
 })
 
 export const mutations = {
   'CHANGE_PAGE_LOADING' (state, payload) {
     state.pageLoading = !!payload
+  },
+
+  'UPDATE_PAGE' (state, payload) {
+    state.page = payload
   }
 }
 

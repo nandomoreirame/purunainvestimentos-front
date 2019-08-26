@@ -3,6 +3,8 @@
 
 <template>
   <div class="page-services">
+    <p-header />
+
     <p-page-header
       title="Transformamos crédito em oportunidades de investimentos"
       :page="page"
@@ -59,5 +61,7 @@
     </p-section>
 
     <p-box-cta />
+
+    <p-footer />
   </div>
 </template>

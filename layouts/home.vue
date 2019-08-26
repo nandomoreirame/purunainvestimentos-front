@@ -1,21 +1,10 @@
 <template>
-  <div>
-    <p-header white />
-    <main id="main-page">
-      <nuxt />
-      <p-box-info />
-    </main>
-    <p-footer />
-  </div>
+  <nuxt />
 </template>
 
 <script>
 export default {
-  name: 'HomeLayout',
-  components: {
-    PHeader: () => import('~/components/Header.vue'),
-    PBoxInfo: () => import('~/components/BoxInfo.vue'),
-    PFooter: () => import('~/components/Footer.vue')
-  }
+  layout: 'default',
+  name: 'HomeLayout'
 }
 </script>

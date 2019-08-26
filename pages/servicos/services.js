@@ -5,6 +5,8 @@ const slug = 'servicos'
 
 export default {
   components: {
+    PHeader: () => import('~/components/Header.vue'),
+    PFooter: () => import('~/components/Footer.vue'),
     PBoxCta: () => import('~/components/BoxCta.vue'),
     PSection: () => import('~/components/Section.vue'),
     PPageHeader: () => import('~/components/PageHeader.vue'),

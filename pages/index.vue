@@ -3,6 +3,8 @@
 
 <template>
   <div class="home">
+    <p-header white />
+
     <p-slider />
 
     <p-meta-tags
@@ -144,5 +146,7 @@
         </b-col>
       </b-row>
     </p-section>
+
+    <p-footer />
   </div>
 </template>

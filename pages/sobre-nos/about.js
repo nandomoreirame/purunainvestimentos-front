@@ -9,6 +9,8 @@ const slug = 'sobre-nos'
 
 export default {
   components: {
+    PHeader: () => import('~/components/Header.vue'),
+    PFooter: () => import('~/components/Footer.vue'),
     PPageHeader: () => import('~/components/PageHeader.vue'),
     PSection: () => import('~/components/Section.vue'),
     PBoxCta: () => import('~/components/BoxCta.vue'),

@@ -1,14 +1,16 @@
 import service from '@/service'
 
 export default {
-  layout: 'home',
+  layout: 'default',
   components: {
+    PHeader: () => import('~/components/Header.vue'),
+    PFooter: () => import('~/components/Footer.vue'),
     PSlider: () => import('~/components/Slider.vue'),
     PSection: () => import('~/components/Section.vue'),
     PColorsBars: () => import('~/components/Bars.vue'),
     PMetaTags: () => import('~/components/MetaTags.vue')
   },
-  async fetch ({ store, error }) {
+  async fetch ({ store }) {
     const { banners, pages } = store.state.wordpress
     const slug = 'home'
 

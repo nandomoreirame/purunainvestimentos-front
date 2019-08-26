@@ -7,9 +7,9 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(config => {
-  if (!isProduction) {
-    console.info(`http request`, config.url)
-  }
+  // if (!isProduction) {
+  //   console.info(`http request`, config.url)
+  // }
 
   return config
 }, function (error) {
@@ -21,9 +21,9 @@ http.interceptors.request.use(config => {
 })
 
 http.interceptors.response.use(response => {
-  if (!isProduction) {
-    console.info(`http response`, response.data)
-  }
+  // if (!isProduction) {
+  //   console.info(`http response`, response.data)
+  // }
 
   return response
 }, function (error) {

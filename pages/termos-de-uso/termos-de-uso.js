@@ -10,6 +10,8 @@ const errorMessage = {
 
 export default {
   components: {
+    PHeader: () => import('~/components/Header.vue'),
+    PFooter: () => import('~/components/Footer.vue'),
     PPageHeader: () => import('~/components/PageHeader.vue')
   },
   computed: {

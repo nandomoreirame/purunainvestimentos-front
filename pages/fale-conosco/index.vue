@@ -2,10 +2,13 @@
 
 <template>
   <div>
+    <p-header />
+
     <p-page-header
       :title="`Fale conosco`"
       :page="page"
     />
+
     <b-container>
       <b-row>
         <b-col col md="10" offset-md="1">
@@ -15,5 +18,7 @@
         </b-col>
       </b-row>
     </b-container>
+
+    <p-footer />
   </div>
 </template>
