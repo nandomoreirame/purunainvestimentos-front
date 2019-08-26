@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer">
+  <footer>
     <p-box-info />
-    <b-container>
+    <b-container class="footer">
       <b-row class="footer-top">
         <b-col col md="3" offset-md="4">
           <nuxt-link to="/politica-e-privacidade">Política e privacidade</nuxt-link>  •  <nuxt-link to="/termos-de-uso">Termos de uso</nuxt-link>
