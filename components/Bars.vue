@@ -35,9 +35,7 @@ export default {
   left: -60px;
   z-index: 1;
 
-  @include media(max-width $sm) {
-    left: 0;
-  }
+  @include media(max-width $sm) { display: none; }
 
   .bar {
     // opacity: 0;
@@ -46,9 +44,7 @@ export default {
       transform .6s cubic-bezier(.215,.61,.355,1);
 
     &:nth-child(1),
-    &:nth-child(3) {
-      span { background-color: rgba(#007aff, .75); }
-    }
+    &:nth-child(3) { span { background-color: rgba(#007aff, .75); } }
 
     span {
       background-color: rgba(#9b9b9b, .75);

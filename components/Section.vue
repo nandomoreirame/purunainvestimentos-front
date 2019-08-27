@@ -6,11 +6,6 @@
   </section>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style lang="scss">
 @import "~assets/sass/variables";
 @import "~assets/sass/mixins";
@@ -19,11 +14,10 @@ export default {
   margin-bottom: 150px;
 
   @include media(max-width $md) {
-    .row {
-      display: block;
-      width: 100%;
-      // margin: auto;
-    }
+    margin-bottom: 60px;
+    text-align: center;
+
+    .row { width: 100vw; }
   }
 
   h2 {
@@ -47,6 +41,10 @@ export default {
     letter-spacing: 1.5px;
     color: #000;
     margin-bottom: 25px;
+
+    @include media(max-width $md) {
+      margin-bottom: 15px;
+    }
   }
 
   p {

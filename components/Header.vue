@@ -1,7 +1,7 @@
 <template>
   <header :class="`header fixed ${white ? 'white' : 'dark'}`">
     <p-alert-bar />
-    <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'white'}`">
+    <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'light'}`">
       <b-container>
         <nuxt-link to="/" class="navbar-brand">
           <PLogoLight v-if="white" />
@@ -51,6 +51,14 @@ export default {
     top: 0;
     right: 0;
     left: 0;
+
+    &.dark {
+      @include media(max-width $lg) {
+        position: relative;
+        background-color: #f8f8f8;
+        padding-bottom: 20px;
+      }
+    }
   }
 
   .navbar-brand {
@@ -58,17 +66,15 @@ export default {
     padding-bottom: 0;
   }
 
-  .navbar.navbar-white {
-    .navbar-toggler-icon {
-      background-image: url("~assets/images/menu.svg");
-    }
-  }
+  // .navbar.navbar-light {
+  //   .navbar-toggler-icon {
+  //     background-image: url("~assets/images/menu.svg");
+  //   }
+  // }
 
   &.white {
     .navbar.navbar-dark {
-      .navbar-nav .nav-link {
-        color: #fff;
-      }
+      .navbar-nav .nav-link { color: #fff; }
 
       .navbar-toggler {
         border: none;
@@ -77,6 +83,8 @@ export default {
       }
 
       @include media(max-width $lg) {
+        .navbar-collapse { background-color: #000; }
+
         .navbar-toggler {
           color: rgba(255, 255, 255, 0.5);
           border-color: rgba(255, 255, 255, 0.1);
@@ -86,10 +94,8 @@ export default {
   }
 
   &.dark {
-    .navbar.navbar-white {
+    .navbar.navbar-light {
       .navbar-nav .nav-link {
-        color: #000;
-
         .navbar-toggler {
           border: none;
           outline: none;
@@ -98,9 +104,9 @@ export default {
       }
 
       @include media(max-width $lg) {
-        .navbar-nav .nav-link {
-          color: #fff;
-        }
+        // .navbar-nav .nav-link { color: #fff; }
+        .navbar-collapse { background-color: #fff; }
+
         .navbar-toggler {
           color: rgba(255, 255, 255, 0.5);
           border-color: rgba(255, 255, 255, 0.1);
@@ -127,7 +133,6 @@ export default {
         bottom: 0;
         height: 100vh;
         width: 100vw;
-        background: #000;
         justify-content: center;
         display: flex;
         z-index: 100;

@@ -12,7 +12,7 @@
 
     <p-section class="section-1">
       <b-row>
-        <b-col col md="4" offset-md="1">
+        <b-col cols="12" md="4" offset-md="1">
           <nav class="service-nav">
             <a
               v-for="(service, i) in services"
@@ -31,7 +31,7 @@
             </a>
           </nav>
         </b-col>
-        <b-col col md="6" offset-md="1" class="column-image right full-right">
+        <b-col cols="12" md="6" offset-md="1" class="column-image right full-right">
           <span
             v-for="(service, i) in services"
             :key="i"
@@ -40,10 +40,10 @@
           />
           <div class="black-block">
             <b-row>
-              <b-col col md="4">
+              <b-col cols="12" md="4">
                 <h3>Detalhes do serviço</h3>
               </b-col>
-              <b-col col md="7">
+              <b-col cols="12" md="7">
                 <div class="service-text">
                   <div
                     v-for="service in services"

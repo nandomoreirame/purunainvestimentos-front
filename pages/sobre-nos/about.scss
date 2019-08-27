@@ -1,12 +1,19 @@
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section {
   &.section-2,
   &.section-3 {
     padding-bottom: 200px;
+
+    @include media(max-width $md) { padding-bottom: 60px; }
   }
 
   &.section-1 {
-    h2 {
-      margin-bottom: 120px;
+    h2 { margin-bottom: 120px; }
+
+    @include media(max-width $md) {
+      h2 { margin-bottom: 60px; }
     }
   }
 
@@ -14,12 +21,23 @@
     h2 {
       font-size: 48px;
       margin-top: 40px;
+
+      @include media(max-width $md) {
+        margin-top: 20px;
+        font-size: 34px;
+        text-align: center;
+      }
     }
 
     ul {
       list-style: none;
       padding: 0;
       margin-bottom: 40px;
+
+      @include media(max-width $md) {
+        margin-bottom: 0;
+        text-align: center;
+      }
 
       li {
         // opacity: 0;
@@ -51,13 +69,26 @@
   &.section-3 {
     text-align: right;
 
+    @include media(max-width $md) { text-align: center; }
+
     .column-image.right,
     .column-image.right span {
       min-height: 420px;
     }
+
+    .column-image.right span {
+      @include media(max-width $md) {
+        position: relative;
+        width: 100vw;
+        left: -15px;
+        right: -15px;
+      }
+    }
   }
 
   &.section-4 {
+    @include media(max-width $md) { margin-bottom: 0; }
+
     h3 {
       font-size: 18px;
       font-weight: 800;
@@ -76,11 +107,22 @@
 
     p:last-child {
       margin-bottom: 60px;
+
+      @include media(max-width $md) { margin-bottom: 30px; }
     }
 
     .column-image.right,
     .column-image.right span {
       min-height: 593px;
+    }
+
+    .column-image.right span {
+      @include media(max-width $md) {
+        position: relative;
+        width: 100vw;
+        left: -15px;
+        right: -15px;
+      }
     }
   }
 }

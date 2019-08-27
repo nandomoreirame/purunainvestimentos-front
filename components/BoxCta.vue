@@ -1,7 +1,7 @@
 <template>
   <p-section class="box-cta">
     <b-row>
-      <b-col col md="6" offset-md="4">
+      <b-col cols="12" md="6" offset-md="4">
         <h2>Quer Investir ou estruturar um Fundo de Investimento?</h2>
         <nuxt-link
           to="/fale-conosco"
@@ -38,6 +38,12 @@ export default {
   padding-top: 150px;
   padding-bottom: 150px;
 
+  @include media(max-width $md) {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
   h2 {
     font-size: 60px;
     font-weight: 800;
@@ -45,14 +51,14 @@ export default {
     letter-spacing: -2px;
     color: #fff;
 
-    @include media(max-width $sm) {
-      font-size: 42px;
-    }
+    @include media(max-width $sm) { font-size: 40px; }
   }
 
   .btn.btn-primary {
     width: 100%;
     max-width: 180px;
+
+    @include media(max-width $md) { margin: 0 auto }
   }
 }
 </style>

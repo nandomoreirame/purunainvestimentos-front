@@ -7,7 +7,7 @@
     />
     <b-container>
       <b-row align-v="center">
-        <b-col col md="5" sm="12" offset-md="1">
+        <b-col cols="12" md="6" sm="12" offset-md="1">
           <h1 v-if="title" class="title" v-html="title" />
           <div v-if="showdescription && Object.keys(page).length && page.excerpt" class="description" v-html="page.excerpt.rendered" />
           <div v-else class="description" />
@@ -19,7 +19,7 @@
             ]"
           />
         </b-col>
-        <b-col col md="6" sm="12" class="column-image right full-right">
+        <b-col cols="12" md="6" sm="12" class="column-image right full-right">
           <span v-if="image || Object.keys(page).length > 0" :style="{ backgroundImage: `url(${pageImage(page, image)})` }" />
         </b-col>
       </b-row>
@@ -126,12 +126,9 @@ export default {
   }
 
   @include media(max-width $md) {
-    padding-top: 180px;
+    padding-top: 80px;
 
-    .row {
-      display: block;
-      width: 100%;
-    }
+    .row { width: 100vw; }
   }
 
   .title {
@@ -142,7 +139,7 @@ export default {
     margin-bottom: 40px;
     opacity: 0;
 
-    @include media(max-width $md) { font-size: 36px; }
+    @include media(max-width $md) { font-size: 32px; }
   }
 
   .description {
@@ -157,6 +154,15 @@ export default {
     min-height: calc(100vh - 130px);
 
     @include media(max-width $md) { min-height: calc(60vh - 130px); }
+  }
+
+  .column-image span {
+    @include media(max-width $md) {
+      width: 100vw;
+      position: relative;
+      right: -15px;
+      left: -15px;
+    }
   }
 }
 </style>

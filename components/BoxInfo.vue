@@ -1,7 +1,7 @@
 <template>
   <p-section class="box-info">
     <b-row>
-      <b-col col md="4">
+      <b-col cols="12" md="4">
         <div v-if="options.contact_links" class="contact-links" v-html="options.contact_links" />
         <h3>Siga-nos</h3>
         <div class="social">
@@ -9,9 +9,9 @@
           <p-icon-linkedin />
         </div>
       </b-col>
-      <b-col col md="8" class="col-right">
+      <b-col cols="12" md="8" class="col-right">
         <b-row>
-          <b-col col md="5" offset-md="1">
+          <b-col cols="12" md="5" offset-md="1">
             <div v-if="options.contact_address" v-html="options.contact_address" />
             <h3>Contato</h3>
             <p v-if="options.contact_email || options.contact_phone">
@@ -20,7 +20,7 @@
               <a v-if="options.contact_phone" :href="`tel:${options.contact_phone.replace(/[^0-9]/g, '')}`" v-text="options.contact_phone" />
             </p>
           </b-col>
-          <b-col v-if="options.contact_email_work" col md="6">
+          <b-col v-if="options.contact_email_work" cols="12" md="6">
             <h3>Trabalhe conosco</h3>
             <p><a :href="`mailto:${options.contact_email_work}`" v-text="options.contact_email_work" /></p>
           </b-col>
@@ -48,18 +48,23 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section.box-info {
   margin-bottom: 100px;
 
-  .contact-links {
-    a {
-      &::before {
-        content: '';
-        display: block;
-        width: 12px;
-        height: 12px;
-        // background: ;
-      }
+  .contact-links a {
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+      position: relative;
+      top: -2px;
+      width: 12px;
+      height: 12px;
+      background: url("~assets/images/external-link.svg") no-repeat 50%;
     }
   }
 
@@ -85,9 +90,16 @@ export default {
   .col-right {
     padding-top: 200px;
     padding-bottom: 100px;
+
+    @include media(max-width $md) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
   }
 
   .col-md-4 {
+    @include media(max-width $md) { text-align: center; }
+
     h3 {
       font-family: Sarabun;
       font-size: 24px;
@@ -114,9 +126,9 @@ export default {
   .col-right {
     position: relative;
 
-    .col-md-5 > div {
-      margin-bottom: 30px;
-    }
+    @include media(max-width $md) { text-align: center; }
+
+    .col-md-5 > div { margin-bottom: 30px; }
 
     &::after {
       content: '';
@@ -139,9 +151,7 @@ export default {
       color: #000;
     }
 
-    p {
-      font-size: 16px;
-    }
+    p { font-size: 16px; }
   }
 }
 </style>

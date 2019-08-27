@@ -12,14 +12,14 @@
 
     <p-section class="section-2 downloads">
       <b-row>
-        <b-col col md="2" offset-md="1">
+        <b-col cols="12" md="2" offset-md="1">
           <p-colors-bars />
         </b-col>
-        <b-col col md="9">
+        <b-col cols="12" md="9">
           <h2>Informações importantes para nossos investidores</h2>
 
           <b-row>
-            <b-col v-for="(item, i) in downloads" :key="i" col md="4" class="downloads-item">
+            <b-col v-for="(item, i) in downloads" :key="i" cols="12" md="4" class="downloads-item">
               <a :href="item.download_file" target="_blank">
                 {{ item.title.rendered }}
                 <span>

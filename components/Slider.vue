@@ -18,8 +18,8 @@
     <nav class="slider-nav">
       <b-container class="slider-inner">
         <b-row>
-          <b-col col md="3" />
-          <b-col v-for="(banner, i) in banners" :key="banner.id" col md="3">
+          <b-col cols="12" md="3" />
+          <b-col v-for="(banner, i) in banners" :key="banner.id" cols="12" md="3">
             <div :class="`nav-item nav-item-${i}`" @click.prevent="sliderIn(i)">
               <small v-text="`0${(i + 1)}`" />
               <span v-if="banner.title" v-text="banner.title.rendered" />
@@ -108,6 +108,7 @@ export default {
 
     @include media(max-width $md) {
       height: 60vh;
+      min-height: 520px;
     }
   }
 
@@ -132,6 +133,8 @@ export default {
   &-inner {
     position: relative;
     z-index: 10;
+
+    @include media(max-width $md) { padding-top: 100px; }
   }
 
   &-nav {
@@ -180,17 +183,14 @@ export default {
     top: 0;
     left: 0;
 
-    .bars {
-      z-index: 10;
-    }
+    .bars { z-index: 10; }
 
     @include media(max-width $md) {
       height: 60vh;
+      min-height: 520px;
     }
 
-    .bars {
-      z-index: 1;
-    }
+    .bars { z-index: 1; }
 
     small,
     h2 {
@@ -198,9 +198,7 @@ export default {
       z-index: 10;
     }
 
-    &:first-child {
-      opacity: 1;
-    }
+    &:first-child { opacity: 1; }
 
     &::before {
       content: '';
@@ -223,9 +221,8 @@ export default {
       line-height: 1.17;
       color: #fff;
 
-      @include media(max-width $md) {
-        font-size: 32px;
-      }
+      @include media(max-width $md) { font-size: 32px; }
+      @include media(max-width $sm) { font-size: 28px; }
     }
   }
 }

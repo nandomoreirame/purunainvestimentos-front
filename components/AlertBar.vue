@@ -11,11 +11,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .alert-bar {
   background-color: #979ea6;
   min-height: 50px;
   padding: 15px;
   text-align: center;
+
+  @include media(max-width $md) {
+    margin-bottom: 20px;
+  }
 
   p {
     color: #fff;

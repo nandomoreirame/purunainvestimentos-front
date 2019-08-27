@@ -9,31 +9,17 @@
       letter-spacing: -2px;
       margin-bottom: 60px;
 
-      @include media(max-width $sm) {
-       font-size: 30px;
-      }
-    }
-
-    @include media(max-width $md) {
-      .col-md-3 {
-        height: 280px;
-      }
+      @include media(max-width $sm) { font-size: 30px; }
     }
 
     .bars {
       position: relative;
       top: 100px;
-
-      @include media(max-width $md) {
-        top: 0;
-      }
     }
   }
 
   &.section-3 {
-    h2 {
-      margin-bottom: 100px;
-    }
+    h2 { margin-bottom: 100px; }
   }
 
   &.section-4 {
@@ -41,29 +27,27 @@
     padding-top: 100px;
     padding-bottom: 100px;
 
+    @include media(max-width $sm) { padding: 60px 0; }
+
     h2,
     h3,
-    p {
-      color: #fff;
-    }
+    p { color: #fff; }
 
     h2 {
       font-size: 60px;
       line-height: 1.17;
       margin-bottom: 60px;
 
-      @include media(max-width $md) {
-        font-size: 42px;
-      }
+      @include media(max-width $md) { font-size: 42px; }
 
-      @include media(max-width $sm) {
-        font-size: 38px;
-      }
+      @include media(max-width $sm) { font-size: 38px; }
     }
 
     .btn {
       width: 100%;
       max-width: 250px;
+
+      @include media(max-width $sm) { margin: 0 auto; }
     }
   }
 
@@ -76,9 +60,7 @@
       color: #000;
       margin-bottom: 30px;
 
-      @include media(max-width $sm) {
-        font-size: 40px;
-      }
+      @include media(max-width $sm) { font-size: 40px; }
     }
 
     h3 {
@@ -103,9 +85,7 @@
       padding: 0;
       list-style: none;
 
-      @include media(max-width $sm) {
-        padding-left: 10px;
-      }
+      @include media(max-width $sm) { padding-left: 10px; }
 
       li {
         font-size: 16px;
@@ -124,6 +104,12 @@
           height: 5px;
           background-color: #007aff;
           margin-right: 5px;
+
+          @include media(max-width $sm) {
+            position: relative;
+            top: -4px;
+            left: auto;
+          }
         }
       }
     }
