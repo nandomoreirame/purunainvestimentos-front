@@ -13,6 +13,13 @@ export default {
       page: ({ wordpress }) => wordpress.pages['fale-conosco']
     })
   },
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
   async fetch ({ store, error }) {
     const slug = 'fale-conosco'
     const { pages } = store.state.wordpress

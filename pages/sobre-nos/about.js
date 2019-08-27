@@ -21,6 +21,13 @@ export default {
       page: ({ wordpress }) => wordpress.pages[slug]
     })
   },
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
   async fetch ({ store }) {
     const { pages } = store.state.wordpress
 

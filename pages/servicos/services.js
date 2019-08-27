@@ -18,6 +18,13 @@ export default {
       services: ({ wordpress }) => wordpress.services
     })
   },
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
   async fetch ({ store, error }) {
     const slug = 'servicos'
     const { pages, services } = store.state.wordpress

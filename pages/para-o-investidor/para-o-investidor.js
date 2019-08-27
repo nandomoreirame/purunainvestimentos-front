@@ -18,6 +18,13 @@ export default {
       downloads: ({ wordpress }) => wordpress.downloads
     })
   },
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
   async fetch ({ store, error }) {
     const { pages, downloads } = store.state.wordpress
 

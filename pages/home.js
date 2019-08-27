@@ -10,6 +10,13 @@ export default {
     PColorsBars: () => import('~/components/Bars.vue'),
     PMetaTags: () => import('~/components/MetaTags.vue')
   },
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
   async fetch ({ store }) {
     const { banners, pages } = store.state.wordpress
     const slug = 'home'

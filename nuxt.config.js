@@ -164,12 +164,6 @@ export default {
       // Run ESLint on save
       if (isDev && isClient) {
         config.devtool = 'eval-source-map'
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
       }
 
       if (isClient) {
