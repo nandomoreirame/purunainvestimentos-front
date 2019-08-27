@@ -2,3 +2,5 @@ https://purunainvestimentos.netlify.com/* https://purunainvestimentos.com.br/:sp
 http://purunainvestimentos.netlify.com/* https://purunainvestimentos.com.br/:splat 301!
 https://www.purunainvestimentos.com.br/* https://purunainvestimentos.com.br/:splat 301!
 http://www.purunainvestimentos.com.br/* https://purunainvestimentos.com.br/:splat 301!
+http://staging.purunainvestimentos.com.br/* https://purunainvestimentos.com.br/:splat 301!
+https://staging.purunainvestimentos.com.br/* https://purunainvestimentos.com.br/:splat 301!
