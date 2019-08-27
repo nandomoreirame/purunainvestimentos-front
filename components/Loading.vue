@@ -124,11 +124,12 @@ export default {
   }
 
   &-enter-active {
-    &, svg { transition: all 0.25s ease-in; }
+    svg { transition: all 0.25s ease-in; }
   }
 
   &-leave-to {
-    &, svg { transition: all 0.5s ease-out; }
+    &,
+    svg { transition: all 0.5s ease-out; }
   }
 
   &-enter,
