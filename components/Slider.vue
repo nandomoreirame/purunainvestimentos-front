@@ -20,7 +20,7 @@
         <b-row>
           <b-col col md="3" />
           <b-col v-for="(banner, i) in banners" :key="banner.id" col md="3">
-            <div :class="`nav-item nav-item-${i}`" @click="sliderIn(i)">
+            <div :class="`nav-item nav-item-${i}`" @click.prevent="sliderIn(i)">
               <small v-text="`0${(i + 1)}`" />
               <span v-if="banner.title" v-text="banner.title.rendered" />
             </div>
@@ -58,7 +58,7 @@ export default {
   },
   mounted () {
     if (process.browser) {
-      setTimeout(() => window.slider.sliderIn(0), 1000)
+      setTimeout(() => window.slider.sliderIn(0), 200)
     }
   },
   methods: {

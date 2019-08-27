@@ -1,24 +1,7 @@
 const { TweenMax, TimelineMax, Back } = require('gsap/all')
 
 class Slider {
-  animateProgressBar (index) {
-    const progressBar = document.querySelectorAll('.slider-progress')
-    const nextIndex = index < 2 ? index + 1 : 0
-
-    return TweenMax.to({}, 8, {
-      force3D: true,
-      onUpdateParams: ['{self}'],
-      onUpdate (timeline) {
-        TweenMax.set(progressBar, {
-          scaleX: timeline.progress(),
-          transformOrigin: '0px 0px'
-        })
-      },
-      onComplete: () => this.sliderIn(nextIndex)
-    })
-  }
-
-  slider (index = 0) {
+  animateSlider (index = 0) {
     const sliderItems = document.querySelectorAll('.slider-item')
     const item = sliderItems[index]
     const text = item.querySelectorAll('h2')
@@ -42,12 +25,28 @@ class Slider {
   sliderIn (index) {
     const sliderItems = document.querySelectorAll('.slider-item')
     const sliderNav = document.querySelectorAll('.slider-nav a')
+    const progressBar = document.querySelectorAll('.slider-progress')
+    const nextIndex = index < 2 ? index + 1 : 0
+
+    TweenMax.killAll()
 
     sliderItems.forEach((item, k) => TweenMax.set(item, { opacity: 0 }))
     sliderNav.forEach((item, k) => TweenMax.set(item, { opacity: 0.7 }))
 
-    this.slider(index)
-    this.animateProgressBar(index).restart()
+    const progressAnimation = TweenMax.to({}, 8, {
+      force3D: true,
+      onUpdateParams: ['{self}'],
+      onStart: () => this.animateSlider(index),
+      onUpdate (timeline) {
+        TweenMax.set(progressBar, {
+          scaleX: timeline.progress(),
+          transformOrigin: '0px 0px'
+        })
+      },
+      onComplete: () => this.sliderIn(nextIndex)
+    })
+
+    return progressAnimation.restart(true, false)
   }
 }
 
