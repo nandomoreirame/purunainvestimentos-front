@@ -1,30 +1,48 @@
 <template>
-  <footer class="footer">
-    <b-container>
+  <footer>
+    <p-box-info />
+    <b-container class="footer">
       <b-row class="footer-top">
-        <b-col col md="3" offset-md="4">
+        <b-col col cols="12" md="3" offset-md="4">
           <nuxt-link to="/politica-e-privacidade">Política e privacidade</nuxt-link>  •  <nuxt-link to="/termos-de-uso">Termos de uso</nuxt-link>
         </b-col>
-        <b-col col md="5">
+        <b-col col cols="12" md="5">
           <p>©2019 Purunã Investimentos . Todos os direitos reservados.</p>
         </b-col>
       </b-row>
-      <b-row class="footer-base">
-        <p>A PURUNÃ investimentos Gestora de Recursos LTDA não comercializa e nem distribui cotas de fundos de investimentos em qualquer outro ativo financeiro. Os fundos de investimento não contam com garantia do administrador do fundo, do gestor de carteira, de qualquer mecanismos de seguro, ou, ainda do Fundo Garantidor de Crédito - FGC. A rentabilidade obtida não representa garantia de rentabilidade futura. É recomendada a leitura cuidadosa do prospecto e regulamento do fundo de investimento pelo investidor ao aplicar seus recursos.</p>
+      <b-row v-if="options.general_footer_text" class="footer-base">
+        <p v-html="options.general_footer_text" />
       </b-row>
     </b-container>
   </footer>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  components: {
+    PBoxInfo: () => import('~/components/BoxInfo.vue')
+  },
+  computed: {
+    ...mapState({
+      options: ({ wordpress }) => wordpress.options
+    })
+  }
 }
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .footer {
+  @include media(max-width $md) { text-align: center; }
+
   .footer-top {
     padding: 0 0 60px 0;
+
+    @include media(max-width $md) { padding: 0 0 30px 0; }
 
     a, p {
       font-size: 14px;
@@ -42,14 +60,26 @@ export default {
 
   .col-md-5 p {
     text-align: right;
+
+    @include media(max-width $md) { text-align: center; }
   }
 
   .footer-base {
     padding-bottom: 40px;
 
+    @include media(max-width $sm) {
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
     p {
       font-size: 16px;
       opacity: .75;
+
+      @include media(max-width $sm) {
+        font-size: 12px;
+      }
     }
   }
 }

@@ -1,14 +1,12 @@
 <template>
-  <p-section class="box-cta" data-scroll="true">
+  <p-section class="box-cta">
     <b-row>
-      <b-col col md="6" offset-md="4">
-        <h2 data-scroll="true" data-scroll-speed="1">Quer Investir ou estruturar um Fundo de Investimento?</h2>
+      <b-col col cols="12" md="6" offset-md="4">
+        <h2>Quer Investir ou estruturar um Fundo de Investimento?</h2>
         <nuxt-link
           to="/fale-conosco"
           class="btn btn-primary"
           role="button"
-          data-scroll="true"
-          data-scroll-speed="1.3"
         >
           <span>Fale conosco</span>
           <svg width="8" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -32,10 +30,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section.box-cta {
   background-color: #1c1c1c;
   padding-top: 150px;
   padding-bottom: 150px;
+
+  @include media(max-width $md) {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 
   h2 {
     font-size: 60px;
@@ -43,11 +50,15 @@ export default {
     line-height: 1.17;
     letter-spacing: -2px;
     color: #fff;
+
+    @include media(max-width $sm) { font-size: 40px; }
   }
 
   .btn.btn-primary {
     width: 100%;
     max-width: 180px;
+
+    @include media(max-width $md) { margin: 0 auto }
   }
 }
 </style>

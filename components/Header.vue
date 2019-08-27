@@ -1,6 +1,7 @@
 <template>
   <header :class="`header fixed ${white ? 'white' : 'dark'}`">
-    <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'white'}`">
+    <p-alert-bar />
+    <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'light'}`">
       <b-container>
         <nuxt-link to="/" class="navbar-brand">
           <PLogoLight v-if="white" />
@@ -26,6 +27,7 @@
 <script>
 export default {
   components: {
+    PAlertBar: () => import('~/components/AlertBar.vue'),
     PLogoDark: () => import('~/components/svg/LogoDark.vue'),
     PLogoLight: () => import('~/components/svg/LogoLight.vue')
   },
@@ -39,6 +41,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .header {
   &.fixed {
     position: absolute;
@@ -46,43 +51,118 @@ export default {
     top: 0;
     right: 0;
     left: 0;
+
+    &.dark {
+      @include media(max-width $lg) {
+        position: relative;
+        background-color: #f8f8f8;
+        padding-bottom: 20px;
+      }
+    }
   }
 
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  // .navbar.navbar-light {
+  //   .navbar-toggler-icon {
+  //     background-image: url("~assets/images/menu.svg");
+  //   }
+  // }
+
   &.white {
-    .navbar.navbar-dark .navbar-nav .nav-link {
-      color: #fff;
+    .navbar.navbar-dark {
+      .navbar-nav .nav-link { color: #fff; }
+
+      .navbar-toggler {
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+
+      @include media(max-width $lg) {
+        .navbar-collapse { background-color: #000; }
+
+        .navbar-toggler {
+          color: rgba(255, 255, 255, 0.5);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+      }
     }
   }
 
   &.dark {
-    .navbar.navbar-white .navbar-nav .nav-link {
-      color: #000;
+    .navbar.navbar-light {
+      .navbar-nav .nav-link {
+        .navbar-toggler {
+          border: none;
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      @include media(max-width $lg) {
+        // .navbar-nav .nav-link { color: #fff; }
+        .navbar-collapse { background-color: #fff; }
+
+        .navbar-toggler {
+          color: rgba(255, 255, 255, 0.5);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+      }
     }
   }
 
   .navbar {
     background: transparent;
     box-shadow: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
 
-    // &.navbar-dark
+    @include media(max-width $lg) {
+      .navbar-toggler { z-index: 1000; }
+
+      .navbar-collapse {
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        display: flex;
+        z-index: 100;
+      }
+
+      .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        width: 100%;
+      }
+    }
 
     .navbar-nav .nav-link {
       font-size: 15px;
-      padding: 15px 5px;
+      padding: 25px 5px;
       margin-left: 25px;
       position: relative;
       overflow: hidden;
       transition: opacity .3s ease-in-out, color .3s ease-in-out;
 
-      &:not(:last-child) {
-        margin-right: 20px;
+      @include media(max-width $lg) {
+        text-align: center;
+        font-size: 22px;
       }
 
-      &:last-child {
-        margin-right: 0;
-      }
+      &:not(:last-child) { margin-right: 20px; }
+      &:last-child { margin-right: 0; }
 
       &::before {
         content: '';
@@ -94,8 +174,8 @@ export default {
         background-color: transparent;
         transition: opacity .3s ease-in-out, transform .3s ease-in-out;
         left: 0;
-        transform: translate3d(0, 100%, 0);
-        opacity: 0;
+        // transform: translate3d(0, 100%, 0);
+        // opacity: 0;
       }
 
       &:hover,
@@ -111,17 +191,13 @@ export default {
       &.active.nuxt-link-exact-active {
         pointer-events: none;
 
-        &::before {
-          background-color: #007aff;
-        }
+        &::before { background-color: #007aff; }
       }
 
       &:not(.nuxt-link-exact-active):hover {
         opacity: 0.6;
 
-        &::before {
-          background-color: #9b9b9b;
-        }
+        &::before { background-color: #9b9b9b; }
       }
     }
   }

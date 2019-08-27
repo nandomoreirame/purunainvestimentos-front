@@ -1,40 +1,28 @@
 <template>
   <p-section class="box-info">
     <b-row>
-      <b-col col md="4" offset-md="1">
-        <h3>Acesse os sites</h3>
-        <ul>
-          <li>
-            <a href="http://cvm.gov.br" target="_blank">
-              <p-icon-external-link />
-              <span>cvm.gov.br</span>
-            </a>
-          </li>
-          <li>
-            <a href="http://comoinvestir.anbima.com.br" target="_blank">
-              <p-icon-external-link />
-              <span>comoinvestir.anbima.com.br</span>
-            </a>
-          </li>
-        </ul>
-
+      <b-col col cols="12" md="4">
+        <div v-if="options.contact_links" class="contact-links" v-html="options.contact_links" />
         <h3>Siga-nos</h3>
         <div class="social">
           <p-icon-instagram />
           <p-icon-linkedin />
         </div>
       </b-col>
-      <b-col col md="7" class="col-right">
+      <b-col col cols="12" md="8" class="col-right">
         <b-row>
-          <b-col col md="5" offset-md="1">
-            <h3>Escritório</h3>
-            <p>R. Francisco Rocha, 198 <br />Batel, Curitiba - PR, <br />80420-130</p>
+          <b-col col cols="12" md="5" offset-md="1">
+            <div v-if="options.contact_address" v-html="options.contact_address" />
             <h3>Contato</h3>
-            <p><a href="mailto:contato@purunainvestimentos.com.br">contato@purunainvestimentos.com.br</a><br /><a href="tel:+5541998007611">+55 41 9 9800 7611</a></p>
+            <p v-if="options.contact_email || options.contact_phone">
+              <a v-if="options.contact_email" :href="`mailto:${options.contact_email}`" v-text="options.contact_email" />
+              <br />
+              <a v-if="options.contact_phone" :href="`tel:${options.contact_phone.replace(/[^0-9]/g, '')}`" v-text="options.contact_phone" />
+            </p>
           </b-col>
-          <b-col col md="6">
+          <b-col v-if="options.contact_email_work" col cols="12" md="6">
             <h3>Trabalhe conosco</h3>
-            <p><a href="mailto:carreiras@purunainvestimentos.com.br">carreiras@purunainvestimentos.com.br</a></p>
+            <p><a :href="`mailto:${options.contact_email_work}`" v-text="options.contact_email_work" /></p>
           </b-col>
         </b-row>
       </b-col>
@@ -43,19 +31,42 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   components: {
     PSection: () => import('~/components/Section.vue'),
-    PIconExternalLink: () => import('~/components/svg/ExternalLink.vue'),
     PIconInstagram: () => import('~/components/svg/Instagram.vue'),
     PIconLinkedin: () => import('~/components/svg/Linkedin.vue')
+  },
+  computed: {
+    ...mapState({
+      options: ({ wordpress }) => wordpress.options
+    })
   }
 }
 </script>
 
 <style lang="scss">
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .section.box-info {
   margin-bottom: 100px;
+
+  .contact-links a {
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+      position: relative;
+      top: -2px;
+      width: 12px;
+      height: 12px;
+      background: url("~assets/images/external-link.svg") no-repeat 50%;
+    }
+  }
 
   .social {
     svg path {
@@ -79,9 +90,16 @@ export default {
   .col-right {
     padding-top: 200px;
     padding-bottom: 100px;
+
+    @include media(max-width $md) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
   }
 
   .col-md-4 {
+    @include media(max-width $md) { text-align: center; }
+
     h3 {
       font-family: Sarabun;
       font-size: 24px;
@@ -108,6 +126,10 @@ export default {
   .col-right {
     position: relative;
 
+    @include media(max-width $md) { text-align: center; }
+
+    .col-md-5 > div { margin-bottom: 30px; }
+
     &::after {
       content: '';
       display: block;
@@ -129,9 +151,7 @@ export default {
       color: #000;
     }
 
-    p {
-      font-size: 16px;
-    }
+    p { font-size: 16px; }
   }
 }
 </style>

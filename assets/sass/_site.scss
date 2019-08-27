@@ -1,22 +1,30 @@
+html,
+body,
+#__nuxt {
+  width: 100vw;
+  overflow-x: hide;
+  overflow-y: scroll;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 
-  &:not(.has-scroll-init) {
-    cursor: wait;
-    overflow: hidden
-  }
+  // &:not(.has-scroll-init) {
+  //   cursor: wait;
+  //   overflow: hidden
+  // }
 
-  &.has-scroll-smooth {
-    overflow: hidden
-  }
+  // &.has-scroll-smooth {
+  //   overflow: hidden
+  // }
 
-  &.has-scroll-dragging {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-  }
+  // &.has-scroll-dragging {
+  //   -webkit-user-select: none;
+  //   -moz-user-select: none;
+  //   -ms-user-select: none;
+  //   user-select: none
+  // }
 }
 
 body {
@@ -28,12 +36,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  overflow-y: scroll;
 }
 
-.has-scroll-smooth body {
-  overflow: hidden
-}
+// .has-scroll-smooth body {
+//   overflow: hidden
+// }
 
 ::-moz-selection {
   background-color: #007aff;
@@ -51,11 +58,40 @@ body {
   overflow-x: hidden;
 }
 
-p {
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+p, li {
   font-size: 14px;
   line-height: 1.79;
   color: #4a4a4a;
-  margin-bottom: 40px;
+}
+
+.page-content {
+  ul {
+    padding: 0 0 0 35px;
+  }
+
+  p, li {
+    margin-bottom: 40px;
+  }
+
+  li {
+    position: relative;
+
+    &::before {
+      display: inline-block;
+      content: '•';
+      position: absolute;
+      top: -10px;
+      left: -15px;
+      font-size: 22px;
+    }
+  }
 }
 
 h3 {
@@ -79,16 +115,18 @@ h3 {
     pointer-events: none;
   }
 
-  &.left span {
-    right: 20px;
-  }
+  @include media(min-width $sm) {
+    &.left span {
+      right: 20px;
+    }
 
-  &.right span {
-    left: 20px;
-  }
+    &.right span {
+      left: 20px;
+    }
 
-  &.full-right span {
-    width: 50vw;
+    &.full-right span {
+      width: 50vw;
+    }
   }
 }
 
@@ -167,6 +205,3 @@ h3 {
 .c-scrollbar_thumb:hover {
   cursor: pointer
 }
-
-.page-enter-active, .page-leave-active { transition: opacity .25s; }
-.page-enter, .page-leave-active { opacity: 0; }

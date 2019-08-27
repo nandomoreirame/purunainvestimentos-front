@@ -1,0 +1,147 @@
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
+.section {
+  &.section-2,
+  &.section-3 {
+    padding-bottom: 200px;
+
+    @include media(max-width $md) { padding-bottom: 60px; }
+  }
+
+  &.section-1 {
+    h2 { margin-bottom: 120px; }
+
+    @include media(max-width $md) {
+      h2 { margin-bottom: 60px; }
+    }
+
+    .item {
+      &-inner { padding: 20px 0; }
+
+      &-icon {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #007aff;
+        padding: 10px 0;
+        margin-bottom: 20px;
+      }
+
+      &-title {
+        color: #000;
+        font-size: 21px;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &.section-2 {
+    h2 {
+      font-size: 48px;
+      margin-top: 40px;
+
+      @include media(max-width $md) {
+        margin-top: 20px;
+        font-size: 34px;
+        text-align: center;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+
+      @include media(max-width $md) {
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      li {
+        // opacity: 0;
+        // transform: translateY(60px);
+        transition: opacity .6s cubic-bezier(.215,.61,.355,1), transform .6s cubic-bezier(.215,.61,.355,1);
+      }
+
+      &.is-inview {
+        li {
+          transform: none;
+          opacity: 1;
+
+          &:nth-child(1) { transition-delay: .1s; }
+          &:nth-child(2) { transition-delay: .2s; }
+          &:nth-child(3) { transition-delay: .3s; }
+          &:nth-child(4) { transition-delay: .4s; }
+          &:nth-child(5) { transition-delay: .5s; }
+        }
+      }
+    }
+
+    li, p {
+      font-size: 16px;
+      line-height: 2;
+      color: #4a4a4a;
+    }
+  }
+
+  &.section-3 {
+    text-align: right;
+
+    @include media(max-width $md) { text-align: center; }
+
+    .column-image.right,
+    .column-image.right span {
+      min-height: 420px;
+    }
+
+    .column-image.right span {
+      @include media(max-width $md) {
+        position: relative;
+        width: 100vw;
+        left: -15px;
+        right: -15px;
+      }
+    }
+  }
+
+  &.section-4 {
+    @include media(max-width $md) { margin-bottom: 0; }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.33;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 2;
+      color: #979ea6;
+      margin: 0 0 60px;
+    }
+
+    p:last-child {
+      margin-bottom: 60px;
+
+      @include media(max-width $md) { margin-bottom: 30px; }
+    }
+
+    .column-image.right,
+    .column-image.right span {
+      min-height: 593px;
+    }
+
+    .column-image.right span {
+      @include media(max-width $md) {
+        position: relative;
+        width: 100vw;
+        left: -15px;
+        right: -15px;
+      }
+    }
+  }
+}

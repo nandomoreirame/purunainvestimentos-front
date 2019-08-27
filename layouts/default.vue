@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <p-header />
-    <main id="main-page">
+  <main id="main-page" :class="`page--${page}`">
+    <transition name="page">
       <nuxt />
-      <p-box-info />
-    </main>
-    <p-footer />
-  </div>
+    </transition>
+  </main>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  components: {
-    PHeader: () => import('~/components/Header.vue'),
-    PBoxInfo: () => import('~/components/BoxInfo.vue'),
-    PFooter: () => import('~/components/Footer.vue')
+  name: 'DefaultLayout',
+  scrollToTop: true,
+  computed: {
+    ...mapState({
+      page: ({ page }) => page
+    })
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
+    })
   }
 }
 </script>

@@ -1,0 +1,49 @@
+html,
+body,
+#__nuxt,
+.error-page,
+.error-page .row,
+.error-page .column-image.full-right {
+  width: 100vw;
+  height: 100vh;
+}
+
+.error-page {
+  text-align: right;
+
+  h1 {
+    color: #979ea6;
+    font-size: 190px;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: -0.8px;
+    color: #000;
+
+    strong {
+      font-size: 36px;
+      letter-spacing: -1.2px;
+      display: block;
+    }
+  }
+
+  .btn.btn-primary {
+    display: inline-block;
+    width: auto;
+    background-color: #007aff;
+    border-color: #007aff;
+    padding: 10px 35px;
+    border-radius: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken(#007aff, 10%);
+      border-color: darken(#007aff, 10%);
+    }
+  }
+}

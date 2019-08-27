@@ -1,5 +1,5 @@
 <template>
-  <a href="https://instagram.com/puruna_investimentos" class="instagram" target="_blank">
+  <a v-if="link" :href="link" class="instagram" target="_blank">
     <svg width="35" height="35" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fill-rule="evenodd">
         <path d="M17.43.141c9.625 0 17.429 7.804 17.429 17.43 0 9.625-7.804 17.429-17.43 17.429C7.804 35 0 27.196 0 17.57 0 7.946 7.803.142 17.43.142z" fill="#007AFF" />
@@ -8,3 +8,15 @@
     </svg>
   </a>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      link: ({ wordpress }) => wordpress.options.contact_instagram
+    })
+  }
+}
+</script>
