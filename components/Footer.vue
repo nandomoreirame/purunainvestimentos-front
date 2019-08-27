@@ -3,10 +3,10 @@
     <p-box-info />
     <b-container class="footer">
       <b-row class="footer-top">
-        <b-col cols="12" md="3" offset-md="4">
+        <b-col col cols="12" md="3" offset-md="4">
           <nuxt-link to="/politica-e-privacidade">Política e privacidade</nuxt-link>  •  <nuxt-link to="/termos-de-uso">Termos de uso</nuxt-link>
         </b-col>
-        <b-col cols="12" md="5">
+        <b-col col cols="12" md="5">
           <p>©2019 Purunã Investimentos . Todos os direitos reservados.</p>
         </b-col>
       </b-row>

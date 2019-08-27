@@ -18,8 +18,8 @@
     <nav class="slider-nav">
       <b-container class="slider-inner">
         <b-row>
-          <b-col cols="12" md="3" />
-          <b-col v-for="(banner, i) in banners" :key="banner.id" cols="12" md="3">
+          <b-col col cols="12" md="3" />
+          <b-col v-for="(banner, i) in banners" :key="banner.id" col cols="12" md="3">
             <div :class="`nav-item nav-item-${i}`" @click.prevent="sliderIn(i)">
               <small v-text="`0${(i + 1)}`" />
               <span v-if="banner.title" v-text="banner.title.rendered" />

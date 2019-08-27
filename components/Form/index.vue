@@ -7,7 +7,7 @@
     @submit="sendContactForm"
   >
     <b-row>
-      <b-col cols="12" md="12">
+      <b-col col cols="12" md="12">
         <b-form-group
           id="input-group-name"
           label-for="input-name"
@@ -33,7 +33,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="12" md="6">
+      <b-col col cols="12" md="6">
         <b-form-group
           id="input-group-email"
           label-for="input-email"
@@ -57,7 +57,7 @@
           />
         </b-form-group>
       </b-col>
-      <b-col cols="12" md="6">
+      <b-col col cols="12" md="6">
         <b-form-group
           id="input-group-phone"
           label-for="input-phone"
@@ -84,7 +84,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="12" md="12">
+      <b-col col cols="12" md="12">
         <b-form-group
           id="input-group-message"
           label-for="input-message"
@@ -120,7 +120,7 @@
       />
     </transition>
     <b-row class="form-footer">
-      <b-col cols="12" md="4">
+      <b-col col cols="12" md="4">
         <b-button
           type="submit"
           block
@@ -134,7 +134,7 @@
           <span v-else>Enviar</span>
         </b-button>
       </b-col>
-      <b-col cols="12" md="8">
+      <b-col col cols="12" md="8">
         <span v-if="contactEmail">ou mande um e-mail para: <a :href="`mailto:${contactEmail}`" v-text="contactEmail" /></span>
       </b-col>
     </b-row>

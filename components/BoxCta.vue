@@ -1,7 +1,7 @@
 <template>
   <p-section class="box-cta">
     <b-row>
-      <b-col cols="12" md="6" offset-md="4">
+      <b-col col cols="12" md="6" offset-md="4">
         <h2>Quer Investir ou estruturar um Fundo de Investimento?</h2>
         <nuxt-link
           to="/fale-conosco"

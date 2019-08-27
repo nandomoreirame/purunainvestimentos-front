@@ -1,18 +1,27 @@
+@import "~assets/sass/variables";
+@import "~assets/sass/mixins";
+
 .page-services {
   .section.section-1 {
     padding-bottom: 150px;
 
     .service-image {
       opacity: 0;
+      z-index: 5;
 
-      &:first-child {
-        opacity: 1;
-      }
+      &:first-child { opacity: 1; }
     }
 
     .col.col-md-4 {
       padding-left: 0;
       padding-right: 0;
+    }
+
+    .col.column-image {
+      width: 100vw;
+      position: relative;
+      left: -15px;
+      right: -15px;
     }
 
     .service-nav {
@@ -60,9 +69,7 @@
             transform: translate3d(0, 0, 0)
           }
 
-          small {
-            transform: translate3d(0, -5px, 0)
-          }
+          small { transform: translate3d(0, -5px, 0) }
         }
       }
     }
@@ -83,6 +90,16 @@
       margin: 300px 0 0 100px;
       position: relative;
       top: 100px;
+      z-index: 10;
+
+      @include media(max-width $md) {
+        width: 100vw;
+        min-width: auto;
+        min-height: 300px;
+        margin: 200px 0 0 0;
+        padding: 40px 15px;
+        top: 0;
+      }
 
       h3 {
         font-size: 36px;
@@ -101,9 +118,7 @@
           line-height: 1.73;
           color: #fff;
 
-          &:last-child {
-            margin-bottom: 0;
-          }
+          &:last-child { margin-bottom: 0; }
         }
 
         > div {
@@ -114,9 +129,14 @@
           top: 25px;
           left: 0;
 
-          &:first-child {
-            opacity: 1;
+          @include media(max-width $md) {
+            transform: translate3d(0, 0, 0) !important;
+            top: auto;
+            left: 0;
+            right: 0;
           }
+
+          &:first-child { opacity: 1; }
         }
       }
     }

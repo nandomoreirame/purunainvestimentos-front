@@ -7,7 +7,13 @@
     />
     <b-container>
       <b-row align-v="center">
-        <b-col cols="12" md="6" sm="12" offset-md="1">
+        <b-col
+          col
+          cols="12"
+          md="5"
+          sm="12"
+          offset-md="1"
+        >
           <h1 v-if="title" class="title" v-html="title" />
           <div v-if="showdescription && Object.keys(page).length && page.excerpt" class="description" v-html="page.excerpt.rendered" />
           <div v-else class="description" />
@@ -19,7 +25,13 @@
             ]"
           />
         </b-col>
-        <b-col cols="12" md="6" sm="12" class="column-image right full-right">
+        <b-col
+          col
+          cols="12"
+          md="6"
+          sm="12"
+          class="column-image right full-right"
+        >
           <span v-if="image || Object.keys(page).length > 0" :style="{ backgroundImage: `url(${pageImage(page, image)})` }" />
         </b-col>
       </b-row>
@@ -36,30 +48,12 @@ export default {
     PMetaTags: () => import('~/components/MetaTags.vue')
   },
   props: {
-    url: {
-      type: String,
-      default: process.env.baseUrl
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    showdescription: {
-      type: Boolean,
-      default: true
-    },
-    description: {
-      type: String,
-      default: ''
-    },
-    image: {
-      type: String,
-      default: ''
-    },
-    page: {
-      type: Object,
-      default: () => ({})
-    }
+    url: { type: String, default: process.env.baseUrl },
+    title: { type: String, default: '' },
+    showdescription: { type: Boolean, default: true },
+    description: { type: String, default: '' },
+    image: { type: String, default: '' },
+    page: { type: Object, default: () => ({}) }
   },
   mounted () {
     (function () {

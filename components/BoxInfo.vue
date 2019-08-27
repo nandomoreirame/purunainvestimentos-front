@@ -1,7 +1,7 @@
 <template>
   <p-section class="box-info">
     <b-row>
-      <b-col cols="12" md="4">
+      <b-col col cols="12" md="4">
         <div v-if="options.contact_links" class="contact-links" v-html="options.contact_links" />
         <h3>Siga-nos</h3>
         <div class="social">
@@ -9,9 +9,9 @@
           <p-icon-linkedin />
         </div>
       </b-col>
-      <b-col cols="12" md="8" class="col-right">
+      <b-col col cols="12" md="8" class="col-right">
         <b-row>
-          <b-col cols="12" md="5" offset-md="1">
+          <b-col col cols="12" md="5" offset-md="1">
             <div v-if="options.contact_address" v-html="options.contact_address" />
             <h3>Contato</h3>
             <p v-if="options.contact_email || options.contact_phone">
@@ -20,7 +20,7 @@
               <a v-if="options.contact_phone" :href="`tel:${options.contact_phone.replace(/[^0-9]/g, '')}`" v-text="options.contact_phone" />
             </p>
           </b-col>
-          <b-col v-if="options.contact_email_work" cols="12" md="6">
+          <b-col v-if="options.contact_email_work" col cols="12" md="6">
             <h3>Trabalhe conosco</h3>
             <p><a :href="`mailto:${options.contact_email_work}`" v-text="options.contact_email_work" /></p>
           </b-col>
