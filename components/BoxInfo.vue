@@ -2,7 +2,7 @@
   <p-section class="box-info">
     <b-row>
       <b-col col md="4">
-        <div v-if="options.contact_links" v-html="options.contact_links" />
+        <div v-if="options.contact_links" class="contact-links" v-html="options.contact_links" />
         <h3>Siga-nos</h3>
         <div class="social">
           <p-icon-instagram />
@@ -50,6 +50,18 @@ export default {
 <style lang="scss">
 .section.box-info {
   margin-bottom: 100px;
+
+  .contact-links {
+    a {
+      &::before {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        // background: ;
+      }
+    }
+  }
 
   .social {
     svg path {

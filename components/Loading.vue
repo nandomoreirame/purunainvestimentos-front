@@ -1,12 +1,12 @@
 <template>
   <transition name="loading">
-    <div v-if="isLoading" :class="`loading-page loading-page--${ isLoading ? `in` : `out` }`">
-      <svg width="75" height="140" viewBox="0 0 75 140" xmlns="http://www.w3.org/2000/svg">
+    <div v-if="isLoading" class="loading-page">
+      <svg width="85" height="140" viewBox="0 0 85 140" xmlns="http://www.w3.org/2000/svg">
         <rect
           y="10"
           width="15"
           height="120"
-          rx="6"
+          rx="10"
           fill="#007aff"
         >
           <animate
@@ -28,10 +28,10 @@
         </rect>
         <rect
           x="30"
-          y="10"
-          width="15"
+          y="16"
+          width="12"
           height="120"
-          rx="6"
+          rx="8"
           fill="#9b9b9b"
         >
           <animate
@@ -53,9 +53,9 @@
         </rect>
         <rect
           x="60"
-          width="15"
+          width="10"
           height="140"
-          rx="6"
+          rx="5"
           fill="#007aff"
         >
           <animate
@@ -120,21 +120,26 @@ export default {
     justify-content: center;
     z-index: 100000;
 
-    svg {
-      transform: rotate(-45deg);
-    }
+    svg { transform: rotate(-45deg); }
   }
 
-  &-enter-active,
-  &-leave-active {
-    transition: all 0.25s ease;
+  &-enter-active {
+    &, svg { transition: all 0.25s ease-in; }
+  }
+
+  &-leave-to {
+    &, svg { transition: all 0.5s ease-out; }
   }
 
   &-enter,
-  &-leave-active {
+  &-leave-to {
     opacity: 0;
     transform: translateZ(0);
     backface-visibility: hidden;
+  }
+
+  &-leave-to {
+    svg { transform: rotate(-45deg) scale(100); }
   }
 }
 </style>

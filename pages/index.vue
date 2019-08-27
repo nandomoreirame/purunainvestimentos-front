@@ -5,7 +5,9 @@
   <div class="home">
     <p-header white />
 
-    <p-slider />
+    <client-only>
+      <p-slider />
+    </client-only>
 
     <p-meta-tags
       title="Fundos de investimentos estruturados"

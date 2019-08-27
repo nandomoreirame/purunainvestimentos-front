@@ -79,7 +79,8 @@ export default {
     // { src: '~/plugins/slider', ssr: false },
     { src: '~/plugins/locomotive-scroll', mode: 'client' },
     { src: '~/plugins/lazysizes', ssr: false },
-    { src: '~/plugins/vuelidate', ssr: false }
+    { src: '~/plugins/vuelidate', ssr: false },
+    { src: '~/plugins/slider.client.js', ssr: false }
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
@@ -110,8 +111,7 @@ export default {
   //   }
   // },
   build: {
-    vendor: [
-    ],
+    // vendor: [ 'slider' ],
     // optimization: {
     //   runtimeChunk: true,
     //   splitChunks: {

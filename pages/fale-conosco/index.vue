@@ -12,9 +12,9 @@
     <b-container>
       <b-row>
         <b-col col md="10" offset-md="1">
-          <no-ssr>
+          <client-only placeholder="Aguarde, carregando...">
             <p-form />
-          </no-ssr>
+          </client-only>
         </b-col>
       </b-row>
     </b-container>

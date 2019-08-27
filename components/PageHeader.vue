@@ -114,7 +114,7 @@ export default {
 @import "~assets/sass/mixins";
 
 .page-header {
-  padding-top: 120px;
+  padding-top: 130px;
   margin-bottom: 120px;
   background-color: #f8f8f8;
   width: 100vw;
@@ -122,9 +122,7 @@ export default {
   .bars {
     z-index: 10;
 
-    .bar {
-      opacity: 0;
-    }
+    .bar { opacity: 0; }
   }
 
   @include media(max-width $md) {
@@ -144,9 +142,7 @@ export default {
     margin-bottom: 40px;
     opacity: 0;
 
-    @include media(max-width $md) {
-      font-size: 36px;
-    }
+    @include media(max-width $md) { font-size: 36px; }
   }
 
   .description {
@@ -158,11 +154,9 @@ export default {
   &,
   .column-image,
   .column-image span {
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 130px);
 
-    @include media(max-width $md) {
-      min-height: calc(60vh - 120px);
-    }
+    @include media(max-width $md) { min-height: calc(60vh - 130px); }
   }
 }
 </style>

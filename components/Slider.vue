@@ -28,6 +28,7 @@
         </b-row>
       </b-container>
     </nav>
+    <span class="slider-progress" />
   </section>
 </template>
 
@@ -55,41 +56,18 @@ export default {
       banners: ({ wordpress }) => wordpress.banners
     })
   },
+  mounted () {
+    if (process.browser) {
+      setTimeout(() => window.slider.sliderIn(0), 1000)
+    }
+  },
   methods: {
     getImage (banner) {
       return banner._embedded['wp:featuredmedia']['0'].source_url
       // return require(`@/assets/images/${banner.image}`)
     },
-    slider (index = 0) {
-      const { TweenMax, TimelineMax, Back } = require('gsap/all')
-      const sliderItems = document.querySelectorAll('.slider-item')
-      const item = sliderItems[index]
-      const text = item.querySelectorAll('h2')
-      const bar01 = item.querySelectorAll('.bar01')
-      const bar02 = item.querySelectorAll('.bar02')
-      const bar03 = item.querySelectorAll('.bar03')
-      const navItem = document.querySelectorAll(`.nav-item-${index}`)
-      const timeline = new TimelineMax()
-
-      TweenMax.set(item, { opacity: 0 })
-      TweenMax.set(navItem, { opacity: 1 })
-
-      timeline
-        .to(item, 0.7, { opacity: 1 }, 0)
-        .staggerFrom(text, 0.5, { y: 50, autoAlpha: 0, ease: Back.easeOut }, 0.1)
-        .staggerFrom(bar01, 0.3, { y: 20, autoAlpha: 0, ease: Back.easeOut }, 0.2)
-        .staggerFrom(bar02, 0.4, { y: 20, autoAlpha: 0, ease: Back.easeOut }, 0.3)
-        .staggerFrom(bar03, 0.5, { y: 20, autoAlpha: 0, ease: Back.easeOut }, 0.4)
-    },
-    sliderIn (index) {
-      const { TweenMax } = require('gsap/all')
-      const sliderItems = document.querySelectorAll('.slider-item')
-      const sliderNav = document.querySelectorAll('.slider-nav a')
-
-      sliderItems.forEach((item, k) => TweenMax.set(item, { opacity: 0 }))
-      sliderNav.forEach((item, k) => TweenMax.set(item, { opacity: 0.7 }))
-
-      this.slider(index)
+    sliderIn (i) {
+      return window.slider.sliderIn(i)
     }
   }
 }
@@ -109,6 +87,18 @@ export default {
 
   @include media(max-width $md) {
     margin-bottom: 60px;
+  }
+
+  &-progress {
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: #007aff;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
   }
 
   &,

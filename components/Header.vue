@@ -1,5 +1,6 @@
 <template>
   <header :class="`header fixed ${white ? 'white' : 'dark'}`">
+    <p-alert-bar />
     <b-navbar toggleable="lg" :type="`${white ? 'dark' : 'white'}`">
       <b-container>
         <nuxt-link to="/" class="navbar-brand">
@@ -26,6 +27,7 @@
 <script>
 export default {
   components: {
+    PAlertBar: () => import('~/components/AlertBar.vue'),
     PLogoDark: () => import('~/components/svg/LogoDark.vue'),
     PLogoLight: () => import('~/components/svg/LogoLight.vue')
   },
@@ -49,6 +51,11 @@ export default {
     top: 0;
     right: 0;
     left: 0;
+  }
+
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .navbar.navbar-white {
@@ -105,13 +112,11 @@ export default {
   .navbar {
     background: transparent;
     box-shadow: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
 
     @include media(max-width $lg) {
-      .navbar-toggler {
-        z-index: 1000;
-      }
+      .navbar-toggler { z-index: 1000; }
 
       .navbar-collapse {
         align-items: center;
@@ -140,7 +145,7 @@ export default {
 
     .navbar-nav .nav-link {
       font-size: 15px;
-      padding: 15px 5px;
+      padding: 25px 5px;
       margin-left: 25px;
       position: relative;
       overflow: hidden;
@@ -151,13 +156,8 @@ export default {
         font-size: 22px;
       }
 
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
+      &:not(:last-child) { margin-right: 20px; }
+      &:last-child { margin-right: 0; }
 
       &::before {
         content: '';
@@ -186,17 +186,13 @@ export default {
       &.active.nuxt-link-exact-active {
         pointer-events: none;
 
-        &::before {
-          background-color: #007aff;
-        }
+        &::before { background-color: #007aff; }
       }
 
       &:not(.nuxt-link-exact-active):hover {
         opacity: 0.6;
 
-        &::before {
-          background-color: #9b9b9b;
-        }
+        &::before { background-color: #9b9b9b; }
       }
     }
   }

@@ -1,6 +1,8 @@
 <template>
   <main id="main-page" :class="`page--${page}`">
-    <nuxt />
+    <transition name="page">
+      <nuxt />
+    </transition>
   </main>
 </template>
 
@@ -9,6 +11,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'DefaultLayout',
+  scrollToTop: true,
   computed: {
     ...mapState({
       page: ({ page }) => page

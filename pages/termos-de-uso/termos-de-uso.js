@@ -19,7 +19,14 @@ export default {
       page: ({ wordpress }) => wordpress.pages[slug]
     })
   },
-  async fetch ({ params, store, error }) {
+  asyncData () {
+    if (!process.server) {
+      setTimeout(() => window.scrollTo(0, 0), 1000)
+    }
+
+    return {}
+  },
+  async fetch ({ store, error }) {
     const { pages } = store.state.wordpress
 
     if (!(slug in pages)) {
@@ -37,11 +44,5 @@ export default {
         })
         .catch(err => console.error(err))
     }
-  },
-  mounted () {
-    // this.$nextTick(() => {
-    //   this.$nuxt.$loading.start()
-    //   setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    // })
   }
 }
